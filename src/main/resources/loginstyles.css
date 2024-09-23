@@ -32,20 +32,10 @@
     -fx-background-radius: 15px;
     -fx-padding: 10px;
     -fx-font-size: 14px;
-    -fx-background-insets: 3px; /* Ensures background color stays within the border */
+    -fx-background-insets: 3px;
 
 }
-/*.button {
-    -fx-background-color: #4CAF50;
-    -fx-font-size: 14px;
-    -fx-border-radius: 25px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-alignment: center;
-    -fx-border-size: 3px;
-    -fx-border-color: #060606;
-}
-*/
+
 .button:hover {
     -fx-background-color: #45a049;
 }
