@@ -67,4 +67,20 @@ public class MainMenuController {
     @FXML
     void openTapahtumatPage(ActionEvent event) {
     }
+
+    /* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
+    @FXML
+    private ListView<String> listViewMainMenu;
+
+    @FXML
+    public void initialize() {
+        // Create an observable list of items
+        ObservableList<String> items = FXCollections.observableArrayList(
+            "Item 1", "Item 2", "Item 3"
+        );
+
+        // Add items to the ListView
+        listViewMainMenu.setItems(items);
+    }
+     */
 }
