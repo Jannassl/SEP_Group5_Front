@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="535.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="491.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
     <children>
-        <ListView fx:id="ListViewMainMenu" layoutX="587.0" layoutY="172.0" prefHeight="458.0" prefWidth="560.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="587.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="172.0" />
-        <Text layoutX="542.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etusivu" textAlignment="CENTER" textOrigin="CENTER" AnchorPane.leftAnchor="541.0" AnchorPane.rightAnchor="542.7041015625">
+        <ListView fx:id="ListViewMainMenu" layoutX="524.0" layoutY="169.0" prefHeight="312.0" prefWidth="377.0" AnchorPane.bottomAnchor="41.0" AnchorPane.topAnchor="169.0" />
+        <Text layoutX="482.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etusivu" textAlignment="CENTER" textOrigin="CENTER">
             <font>
                 <Font size="27.0" />
             </font>
         </Text>
-        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="942.0" layoutY="10.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="41.0" prefWidth="88.0" text="Profiili" AnchorPane.rightAnchor="140.5" AnchorPane.topAnchor="10.0">
+        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="778.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="41.0" prefWidth="88.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
             <font>
                 <Font size="17.0" />
             </font>
@@ -40,8 +40,8 @@
                 <Font size="25.0" />
             </font>
         </Button>
-        <Text layoutX="794.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tähän jokin kuvaava otsikko" />
-        <Line endX="1065.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
-        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="1069.0" layoutY="10.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="41.0" prefWidth="88.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="13.5" AnchorPane.topAnchor="10.0" />
+        <Text layoutX="638.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tähän jokin kuvaava otsikko" />
+        <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
+        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="41.0" prefWidth="88.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
     </children>
 </AnchorPane>
