@@ -9,39 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController" stylesheets="@EtusivuStyles.css">
     <children>
-        <ListView fx:id="ListViewMainMenu" layoutX="524.0" layoutY="169.0" prefHeight="312.0" prefWidth="377.0" AnchorPane.bottomAnchor="41.0" AnchorPane.topAnchor="169.0" />
         <Text layoutX="482.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etusivu" textAlignment="CENTER" textOrigin="CENTER">
             <font>
                 <Font size="27.0" />
             </font>
         </Text>
-        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="778.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="30.0" prefWidth="70.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
-            <font>
-                <Font size="17.0" />
-            </font>
-        </Button>
-        <Button fx:id="KurssitButton" layoutX="304.0" layoutY="172.0" mnemonicParsing="false" onAction="#openKurssitPage" prefHeight="50.0" prefWidth="134.0" text="Kurssit" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="172.0">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Button>
-        <Button fx:id="OppilaatButton" layoutX="72.0" layoutY="171.0" mnemonicParsing="false" onAction="#openOppilaatPage" prefHeight="50.0" prefWidth="134.0" text="Oppilaat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="171.0">
-            <font>
-                <Font size="22.0" />
-            </font>
-        </Button>
-        <Button fx:id="TapahtumatButton" layoutX="72.0" layoutY="309.0" mnemonicParsing="false" onAction="#openTapahtumatPage" prefHeight="50.0" prefWidth="134.0" text="Tapahtumat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="309.0">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
-        <Button fx:id="KalenteriButton" layoutX="304.0" layoutY="309.0" mnemonicParsing="false" onAction="#openKalenteriPage" prefHeight="50.0" prefWidth="134.0" text="Kalenteri" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="309.0">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Button>
-        <Text layoutX="638.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tähän jokin kuvaava otsikko" />
+        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button" />
+        <Button fx:id="KurssitButton" layoutX="304.0" layoutY="172.0" mnemonicParsing="false" onAction="#openKurssitPage" prefHeight="50.0" prefWidth="134.0" text="Kurssit" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="172.0" styleClass="kurssit-button" />
+        <Button fx:id="OppilaatButton" layoutX="72.0" layoutY="171.0" mnemonicParsing="false" onAction="#openOppilaatPage" prefHeight="50.0" prefWidth="134.0" text="Oppilaat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="171.0" styleClass="oppilaat-button" />
+        <Button fx:id="TapahtumatButton" layoutX="72.0" layoutY="309.0" mnemonicParsing="false" onAction="#openTapahtumatPage" prefHeight="50.0" prefWidth="134.0" text="Tapahtumat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="309.0" styleClass="tapahtumat-button" />
+        <Button fx:id="KalenteriButton" layoutX="304.0" layoutY="309.0" mnemonicParsing="false" onAction="#openKalenteriPage" prefHeight="50.0" prefWidth="134.0" text="Kalenteri" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="309.0" styleClass="kalenteri-button" />
+        <Text layoutX="638.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Päivän Tapahtumat:" styleClass="paivantapahtuma" />
         <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
-        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="30.0" prefWidth="70.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
+        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" styleClass="logout-button" />
+        <ListView fx:id="ListViewMainMenu" layoutX="524.0" layoutY="169.0" prefHeight="312.0" prefWidth="377.0" AnchorPane.bottomAnchor="41.0" AnchorPane.topAnchor="169.0" styleClass="main-menu-list"/>
     </children>
 </AnchorPane>
