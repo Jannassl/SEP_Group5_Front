@@ -84,6 +84,15 @@ public class MainMenuController {
 
     @FXML
     void openTapahtumatPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tapahtumat.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
