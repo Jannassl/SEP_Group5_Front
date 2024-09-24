@@ -11,6 +11,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ProfiiliController {
+
+    @FXML
+    private Button LogOutButton;
+
+    @FXML
+    private Button TakaisinButton;
+
     @FXML
     void CloseProgram(ActionEvent event) {
         try {
@@ -23,4 +30,18 @@ public class ProfiiliController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void navigateBackwards(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainMenu.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
