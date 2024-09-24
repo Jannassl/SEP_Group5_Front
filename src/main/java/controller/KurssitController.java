@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package controller;
 
 import javafx.event.ActionEvent;
@@ -11,29 +6,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainMenuController {
-    @FXML
-    private Button KalenteriButton;
-    @FXML
-    private Button KurssitButton;
-    @FXML
-    private ListView<?> ListViewMainMenu;
+public class KurssitController {
+
     @FXML
     private Button LogOutButton;
+
     @FXML
-    private Button OppilaatButton;
+    private Button CoursePageSearchButton;
+
     @FXML
     private Button ProfiiliButton;
-    @FXML
-    private Button TapahtumatButton;
 
-    public MainMenuController() {
-    }
+    @FXML
+    private Button TakaisinButton;
 
     @FXML
     void CloseProgram(ActionEvent event) {
@@ -49,26 +38,9 @@ public class MainMenuController {
     }
 
     @FXML
-    void openKalenteriPage(ActionEvent event) {
-    }
-
-    @FXML
-    void openKurssitPage(ActionEvent event) {
+    void navigateBackwards(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/kurssit.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void openOppilaatPage(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/studentInfo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainMenu.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -92,21 +64,14 @@ public class MainMenuController {
     }
 
     @FXML
-    void openTapahtumatPage(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/tapahtumat.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void searchCourse(ActionEvent event) {
+
     }
 
+}
 
 
-    /* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
+/* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
     @FXML
     private ListView<String> listViewMainMenu;
 
@@ -121,4 +86,3 @@ public class MainMenuController {
         listViewMainMenu.setItems(items);
     }
      */
-}
