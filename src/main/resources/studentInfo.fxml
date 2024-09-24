@@ -10,26 +10,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentInfoController" stylesheets="@StudentInfoStyles.css">
    <children>
-      <Text layoutX="422.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilasrekisteri" textAlignment="CENTER" textOrigin="CENTER">
+      <Text layoutX="482.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilasrekisteri" textAlignment="CENTER" textOrigin="CENTER">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="788.0" layoutY="24.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="41.0" prefWidth="88.0" text="Profiili">
+      <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button">
          <font>
-            <Font size="17.0" />
+            <Font size="14.0" />
          </font>
       </Button>
-      <Line endX="913.0" layoutX="115.0" layoutY="83.0" startX="-115.0" />
-      <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="915.0" layoutY="24.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="41.0" prefWidth="88.0" text="Kirjaudu ulos" />
+      <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
+      <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" styleClass="logout-button" />
       <Text layoutX="40.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilaan tiedot">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Text>
-      <ListView layoutX="481.0" layoutY="159.0" prefHeight="303.0" prefWidth="459.0" />
+      <ListView fx:id="StudentListView" layoutX="481.0" layoutY="159.0" prefHeight="303.0" prefWidth="459.0" />
       <VBox layoutX="40.0" layoutY="170.0" prefHeight="200.0" prefWidth="126.0">
          <children>
             <Label text="Nimi:">
@@ -49,14 +49,14 @@
             </Label>
          </children>
       </VBox>
-      <TextField layoutX="532.0" layoutY="121.0" prefHeight="25.0" prefWidth="174.0" promptText="Syötä oppilaan nimi" />
+      <TextField fx:id="SearchTextField" layoutX="532.0" layoutY="121.0" prefHeight="25.0" prefWidth="174.0" promptText="Syötä oppilaan nimi" />
       <Label layoutX="481.0" layoutY="120.0" text="Haku:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="OppilasPageSearchButton" layoutX="723.0" layoutY="120.0" mnemonicParsing="false" onAction="#searchOppilas" prefHeight="27.0" prefWidth="57.0" text="Hae" />
-      <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="26.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="41.0" prefWidth="88.0" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="26.0">
+      <Button fx:id="OppilasPageSearchButton" layoutX="723.0" layoutY="120.0" mnemonicParsing="false" onAction="#searchOppilas" prefHeight="27.0" prefWidth="57.0" text="Hae" styleClass="search-button" />
+      <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" styleClass="back-button">
          <font>
             <Font size="17.0" />
          </font>

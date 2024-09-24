@@ -1,0 +1,59 @@
+.profiili-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #add8e6; /* Light blue */
+    -fx-border-color: #87ceeb; /* Sky blue */
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.profiili-button:hover {
+    -fx-background-color: #87ceeb; /* Sky blue */
+}
+
+.logout-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #f08080; /* Light coral */
+    -fx-border-color: #da5e4e; /* Salmon */
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.logout-button:hover {
+    -fx-background-color: #da5e4e; /* Salmon */
+}
+
+.search-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #d3d3d3; /* Light gray */
+    -fx-border-color: #a9a9a9; /* Dark gray */
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.search-button:hover {
+    -fx-background-color: #c0c0c0; /* Slightly darker gray */
+}
+
+.back-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #d3d3d3; /* Light gray */
+    -fx-border-color: #a9a9a9; /* Dark gray */
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.back-button:hover {
+    -fx-background-color: #c0c0c0; /* Slightly darker gray */
+}
