@@ -30,8 +30,8 @@
 
 .search-button {
     -fx-font-size: 14px;
-    -fx-background-color: #d3d3d3; /* Light gray */
-    -fx-border-color: #a9a9a9; /* Dark gray */
+    -fx-background-color: #4CAF50; /* Light gray */
+    -fx-border-color: #000000; /* Dark gray */
     -fx-border-radius: 25px;
     -fx-border-width: 3px;
     -fx-background-radius: 15px;
@@ -40,7 +40,7 @@
 }
 
 .search-button:hover {
-    -fx-background-color: #c0c0c0; /* Slightly darker gray */
+    -fx-background-color: #45a049; /* Slightly darker gray */
 }
 
 .back-button {
@@ -56,4 +56,73 @@
 
 .back-button:hover {
     -fx-background-color: #c0c0c0; /* Slightly darker gray */
+}
+
+.search-section {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-border-color: #d3d3d3; /* Light gray border */
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+
+.info-window {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+.info-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px 0;
+}
+
+.info-label-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-padding: 10px 0;
+}
+
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+    -fx-border-width: 3px;
+    -fx-padding: 10px;
+    -fx-background-radius: 10px;
+}
+
+.search-text {
+    -fx-font-size: 18px;
+    -fx-text-fill: #000000;
+    -fx-padding: 10px;
+    -fx-border-width: 3px;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+
+}
+
+.SearchTextField{
+    -fx-font-size: 18px;
+    -fx-text-fill: #000000;
+    -fx-padding: 10px;
+    -fx-border-width: 3px;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10px;
+}
+
+/* Remove blue border when TextField is focused */
+.text-field:focused {
+    -fx-border-color: black;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
 }

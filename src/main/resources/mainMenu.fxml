@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController" stylesheets="@EtusivuStyles.css">
     <children>
-        <Text layoutX="482.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etusivu" textAlignment="CENTER" textOrigin="CENTER">
+        <Text layoutX="450.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Etusivu" textAlignment="CENTER" textOrigin="CENTER">
             <font>
                 <Font size="27.0" />
             </font>
