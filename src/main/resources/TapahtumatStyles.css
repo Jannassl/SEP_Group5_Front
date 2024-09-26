@@ -13,66 +13,6 @@
     -fx-background-color: #87ceeb;
 }
 
-.kurssit-button {
-    -fx-font-size: 20px;
-    -fx-background-color: #d3d3d3;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
-
-.kurssit-button:hover {
-    -fx-background-color: #c0c0c0;
-}
-
-.oppilaat-button {
-    -fx-font-size: 20px;
-    -fx-background-color: #d3d3d3;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
-
-.oppilaat-button:hover {
-    -fx-background-color: #c0c0c0;
-}
-
-.tapahtumat-button {
-    -fx-font-size: 20px;
-    -fx-background-color: #d3d3d3;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
-
-.tapahtumat-button:hover {
-    -fx-background-color: #c0c0c0;
-}
-
-.kalenteri-button {
-    -fx-font-size: 20px;
-    -fx-background-color: #d3d3d3;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
-
-.kalenteri-button:hover {
-    -fx-background-color: #c0c0c0;
-}
-
 .logout-button {
     -fx-font-size: 14px;
     -fx-background-color: #fa8072;
@@ -88,15 +28,83 @@
     -fx-background-color: #da5e4e;
 }
 
-.paivantapahtuma {
-    -fx-font-size: 20px;
-    -fx-font-color: #060606;
+.back-button {
+    -fx-font-size: 14px;
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
 }
 
-.main-menu-list {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #060606;
-    -fx-border-radius: 10px;
+.back-button:hover {
+    -fx-background-color: #c0c0c0;
+}
+
+.Today-Button {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
     -fx-border-width: 3px;
+    -fx-background-radius: 25px;
     -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.Today-Button:hover {
+    -fx-background-color: #c0c0c0;
+}
+
+.Week-Button {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 25px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.Week-Button:hover {
+    -fx-background-color: #c0c0c0;
+}
+
+.Month-Button {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 25px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.Month-Button:hover {
+    -fx-background-color: #c0c0c0;
+}
+
+.All-Button {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 25px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
+}
+
+.All-Button:hover {
+    -fx-background-color: #c0c0c0;
+}
+
+.Lista-ikkuna {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #a9a9a9;
+    -fx-border-radius: 25px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 25px;
+    -fx-padding: 10px;
+    -fx-background-insets: 3px;
 }

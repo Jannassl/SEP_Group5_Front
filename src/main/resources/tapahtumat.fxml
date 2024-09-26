@@ -9,14 +9,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TapahtumatController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TapahtumatController" stylesheets="@TapahtumatStyles.css">
     <children>
         <Text layoutX="450.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tapahtumat" textAlignment="CENTER" textOrigin="CENTER">
             <font>
                 <Font size="27.0" />
             </font>
         </Text>
-        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
+        <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" >
             <font>
                 <Font size="14.0" />
             </font>
@@ -28,26 +28,26 @@
                 <Font size="17.0" />
             </font>
         </Button>
-      <ListView layoutX="22.0" layoutY="228.0" prefHeight="329.0" prefWidth="974.0" />
+      <ListView layoutX="22.0" layoutY="228.0" prefHeight="329.0" prefWidth="974.0" styleClass="Lista-ikkuna"/>
       <Label layoutX="383.0" layoutY="135.0" />
-      <HBox layoutX="22.0" layoutY="190.0" prefHeight="30.0" prefWidth="397.0" spacing="30.0">
+      <HBox layoutX="22.0" layoutY="170.0" prefHeight="30.0" prefWidth="450.0" spacing="25.0">
          <children>
-            <Button fx:id="TodayButton" mnemonicParsing="false" onAction="#filterByToday" prefHeight="25.0" prefWidth="76.0" text="Tänään">
+            <Button fx:id="TodayButton" mnemonicParsing="false" onAction="#filterByToday" prefHeight="25.0" prefWidth="90.0" text="Tänään" styleClass="Today-Button">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="WeeklyButton" mnemonicParsing="false" onAction="#filterByWeekly" prefHeight="25.0" prefWidth="76.0" text="Viikko">
+            <Button fx:id="WeeklyButton" mnemonicParsing="false" onAction="#filterByWeekly" prefHeight="25.0" prefWidth="90.0" text="Viikko" styleClass="Week-Button">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="MonthlyButton" mnemonicParsing="false" onAction="#filterByMonth" prefHeight="25.0" prefWidth="76.0" text="Kuukausi">
+            <Button fx:id="MonthlyButton" mnemonicParsing="false" onAction="#filterByMonth" prefHeight="25.0" prefWidth="90.0" text="Kuukausi" styleClass="Month-Button">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="AllEvents" mnemonicParsing="false" onAction="#getAllEvents" prefHeight="25.0" prefWidth="76.0" text="Kaikki">
+            <Button fx:id="AllEvents" mnemonicParsing="false" onAction="#getAllEvents" prefHeight="25.0" prefWidth="90.0" text="Kaikki" styleClass="All-Button">
                <font>
                   <Font size="14.0" />
                </font>
