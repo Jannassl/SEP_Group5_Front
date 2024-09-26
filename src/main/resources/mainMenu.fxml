@@ -17,8 +17,8 @@
         <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button" />
         <Button fx:id="KurssitButton" layoutX="304.0" layoutY="172.0" mnemonicParsing="false" onAction="#openKurssitPage" prefHeight="50.0" prefWidth="134.0" text="Kurssit" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="172.0" styleClass="kurssit-button" />
         <Button fx:id="OppilaatButton" layoutX="72.0" layoutY="171.0" mnemonicParsing="false" onAction="#openOppilaatPage" prefHeight="50.0" prefWidth="134.0" text="Oppilaat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="171.0" styleClass="oppilaat-button" />
-        <Button fx:id="TapahtumatButton" layoutX="72.0" layoutY="309.0" mnemonicParsing="false" onAction="#openTapahtumatPage" prefHeight="50.0" prefWidth="134.0" text="Tapahtumat" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="309.0" styleClass="tapahtumat-button" />
-        <Button fx:id="KalenteriButton" layoutX="304.0" layoutY="309.0" mnemonicParsing="false" onAction="#openKalenteriPage" prefHeight="50.0" prefWidth="134.0" text="Kalenteri" AnchorPane.leftAnchor="304.0" AnchorPane.topAnchor="309.0" styleClass="kalenteri-button" />
+        <Button fx:id="KalenteriButton" layoutX="72.0" layoutY="309.0" mnemonicParsing="false" onAction="#openTapahtumatPage" prefHeight="50.0" prefWidth="134.0" text="Kalenteri" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="309.0" styleClass="kalenteri-button" />
+
         <Text layoutX="638.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Päivän Tapahtumat:" styleClass="paivantapahtuma" />
         <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
         <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" styleClass="logout-button" />

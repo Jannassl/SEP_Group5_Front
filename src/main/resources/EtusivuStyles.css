@@ -43,16 +43,6 @@
     -fx-background-color: #c0c0c0;
 }
 
-.tapahtumat-button {
-    -fx-font-size: 20px;
-    -fx-background-color: #d3d3d3;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
 
 .tapahtumat-button:hover {
     -fx-background-color: #c0c0c0;
