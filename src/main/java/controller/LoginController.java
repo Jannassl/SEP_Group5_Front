@@ -1,4 +1,3 @@
-// src/main/java/controller/LoginController.java
 package controller;
 
 import javafx.event.ActionEvent;
@@ -11,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 import model.Opettaja;
+import service.OpettajaService;
 
 import java.io.IOException;
 
@@ -22,13 +22,16 @@ public class LoginController {
     @FXML
     private TextField loginUsername;
 
+    private final OpettajaService opettajaService = new OpettajaService();
+
     @FXML
     void attemptLogin(ActionEvent event) {
         String username = loginUsername.getText();
         String password = loginPassword.getText();
 
-        // Validate the user
-        Opettaja opettaja = validateUser(username, password);
+        // Validate the user using OpettajaService
+        Opettaja opettaja = opettajaService.login(username, password);
+
         if (opettaja != null) {
             KirjautunutKayttaja.getInstance().setOpettaja(opettaja);
 
@@ -42,9 +45,9 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            showAlert("Kirjautuminen epäonnistui","Tiedot eivät täsmää","Käyttäjänimi tai salasana väärin");
-            System.out.println("Invalid username or password");
+            showAlert("Login Failed", "Invalid Credentials", "The username or password you entered is incorrect.");
         }
+
     }
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -54,13 +57,5 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    private Opettaja validateUser(String username, String password) {
-        // Implement your user validation logic here
-        // For example, query the database to check if the user exists
-        // This is a placeholder implementation
-        if ("validUsername".equals(username) && "validPassword".equals(password)) {
-            return new Opettaja("FirstName", "LastName", username, password);
-        }
-        return null;
-    }
+
 }
