@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
@@ -41,9 +42,16 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            // Handle login failure (e.g., show an error message)
+            showAlert("Kirjautuminen epäonnistui","Tiedot eivät täsmää","Käyttäjänimi tai salasana väärin");
             System.out.println("Invalid username or password");
         }
+    }
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     private Opettaja validateUser(String username, String password) {
