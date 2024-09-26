@@ -41,24 +41,27 @@
          </columnConstraints>
          <children>
             <Label styleClass="info-label" text="Tunnus:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Text fx:id="tunnusText" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Text fx:id="tunnusField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label styleClass="info-label" text="Nimi:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Text fx:id="nimiText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label styleClass="info-label" text="Opettaja:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Text fx:id="opettajaField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label styleClass="info-label" text="Opettaja:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Text fx:id="opettajaText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label styleClass="info-label" text="Nimi:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="nimiField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <Label styleClass="info-label" text="Aloitus Pvm:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <Text fx:id="aloitusPvmText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="aloitusPvmField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
             <Label styleClass="info-label" text="Lopetus Pvm:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <Text fx:id="lopetusPvmText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="lopetusPvmField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
             <Label styleClass="info-label" text="Kuvaus:" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-            <TextArea fx:id="kuvausTextArea" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="kuvausTextArea" editable="false" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+            <Button fx:id="editSaveButton" onAction="#handleEditSave" text="Muokkaa" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
          </children>
          <rowConstraints>
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />

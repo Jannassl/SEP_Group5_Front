@@ -93,13 +93,6 @@ public class Kurssi {
     // toString-metodi
     @Override
     public String toString() {
-        return "Kurssi{" +
-                "kurssi_id=" + kurssi_id +
-                ", nimi='" + nimi + '\'' +
-                ", kuvaus='" + kuvaus + '\'' +
-                ", alkupvm=" + alkupvm +
-                ", loppupvm=" + loppupvm +
-                ", opettaja=" + (opettaja != null ? opettaja.getOpettaja_id() : null) +
-                '}';
+        return getNimi() + " " + "id: (" + getKurssi_id() + ")";
     }
 }
