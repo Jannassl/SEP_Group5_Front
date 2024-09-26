@@ -1,15 +1,24 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
+import model.Opiskelija;
+import service.OpiskelijaService;
 
 import java.io.IOException;
+import java.util.List;
 
 public class StudentInfoController {
 
@@ -24,6 +33,39 @@ public class StudentInfoController {
 
     @FXML
     private Button TakaisinButton;
+
+    @FXML
+    private TableView<Opiskelija> StudentTableView;
+
+    @FXML
+    private TableColumn<Opiskelija, Long> idColumn;
+
+    @FXML
+    private TableColumn<Opiskelija, String> firstNameColumn;
+
+    @FXML
+    private TableColumn<Opiskelija, String> lastNameColumn;
+
+    private OpiskelijaService opiskelijaService;
+
+    public StudentInfoController() {
+        this.opiskelijaService = new OpiskelijaService();
+    }
+
+    @FXML
+    public void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("opiskelija_id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("etunimi"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("sukunimi"));
+
+        loadOpiskelijat();
+    }
+
+    private void loadOpiskelijat() {
+        List<Opiskelija> opiskelijat = opiskelijaService.getAllOpiskelijat();
+        ObservableList<Opiskelija> opiskelijaObservableList = FXCollections.observableArrayList(opiskelijat);
+        StudentTableView.setItems(opiskelijaObservableList);
+    }
 
     @FXML
     void CloseProgram(ActionEvent event) {
@@ -72,20 +114,3 @@ public class StudentInfoController {
     }
 
 }
-
-
-/* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
-    @FXML
-    private ListView<String> listViewMainMenu;
-
-    @FXML
-    public void initialize() {
-        // Create an observable list of items
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "Item 1", "Item 2", "Item 3"
-        );
-
-        // Add items to the ListView
-        listViewMainMenu.setItems(items);
-    }
-     */

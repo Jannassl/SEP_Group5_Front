@@ -11,7 +11,7 @@ import model.KirjautunutKayttaja;
 
 import java.io.IOException;
 
-public class TapahtumatController {
+public class KalenteriController {
 
     @FXML
     private Button AllEvents;
