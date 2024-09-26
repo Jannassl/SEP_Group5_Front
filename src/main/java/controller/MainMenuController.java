@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import model.KirjautunutKayttaja;
 
 import java.io.IOException;
 
@@ -37,6 +38,8 @@ public class MainMenuController {
 
     @FXML
     void CloseProgram(ActionEvent event) {
+        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
             Parent root = loader.load();
