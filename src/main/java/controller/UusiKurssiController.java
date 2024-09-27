@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.KirjautunutKayttaja;
 import model.Kurssi;
 import model.Opiskelija;
 import service.KurssiService;
@@ -65,17 +66,20 @@ public class UusiKurssiController {
     public void initData(Kurssi kurssi) {
         if (kurssi != null) {
             this.currentKurssi = kurssi;
+
             populateFields();
             loadEnrollments();
         } else {
             this.currentKurssi = new Kurssi();
             clearFields();
+            currentKurssi.setOpettaja(KirjautunutKayttaja.getInstance().getOpettaja());
+            opettajaField.setText(currentKurssi.getOpettaja().getNimi());
         }
     }
 
     private void populateFields() {
         nimiField.setText(currentKurssi.getNimi());
-        opettajaField.setText(currentKurssi.getOpettaja().getSahkoposti());
+        opettajaField.setText(currentKurssi.getOpettaja().getNimi());
         aloitusPvmField.setValue(convertToLocalDate(currentKurssi.getAlkupvm()));
         lopetusPvmField.setValue(convertToLocalDate(currentKurssi.getLoppupvm()));
         kuvausTextArea.setText(currentKurssi.getKuvaus());
@@ -119,8 +123,8 @@ public class UusiKurssiController {
             currentKurssi = new Kurssi();
         }
 
+        currentKurssi.setOpettaja(KirjautunutKayttaja.getInstance().getOpettaja());
         currentKurssi.setNimi(nimiField.getText());
-
         currentKurssi.setAlkupvm(convertToDate(aloitusPvmField.getValue()));
         currentKurssi.setLoppupvm(convertToDate(lopetusPvmField.getValue()));
         currentKurssi.setKuvaus(kuvausTextArea.getText());
