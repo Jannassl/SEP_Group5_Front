@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 import javafx.scene.image.Image;
+import model.Opettaja;
 
 import java.io.IOException;
 
@@ -19,6 +21,15 @@ public class ProfiiliController {
     private ImageView imageView;
     @FXML
     private Button LogOutButton;
+    @FXML
+    private Label OpettajaIdLabel;
+    @FXML
+    private Label EtunimiLabel;
+    @FXML
+    private Label SukunimiLabel;
+    @FXML
+    private Label SahkopostiLabel;
+
 
 
     @FXML
@@ -27,6 +38,14 @@ public class ProfiiliController {
     public void initialize() {
         Image image = new Image(getClass().getResource("/defaultProfilePic.jpg").toExternalForm());
         imageView.setImage(image);
+        Opettaja currentOpettaja = KirjautunutKayttaja.getInstance().getOpettaja();
+        if(currentOpettaja != null){
+            OpettajaIdLabel.setText("Opettaja ID: "+ currentOpettaja.getOpettaja_id());
+            EtunimiLabel.setText("Nimi: "+ currentOpettaja.getEtunimi());
+            SukunimiLabel.setText("Sukunimi: "+ currentOpettaja.getSukunimi());
+            SahkopostiLabel.setText("Sähköposti: "+ currentOpettaja.getSahkoposti());
+
+        }
     }
 
     @FXML
