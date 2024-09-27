@@ -6,9 +6,6 @@
 import view.UserInterface;
 
 public class Main {
-    public Main() {
-    }
-
     public static void main(String[] args) {
         UserInterface.launch(UserInterface.class);
     }

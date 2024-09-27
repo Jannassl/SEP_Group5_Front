@@ -65,16 +65,16 @@ public class Kurssi {
         this.kuvaus = kuvaus;
     }
 
-    public Date getAlkupvm() {
-        return alkupvm;
+    public java.sql.Date getAlkupvm() {
+        return (java.sql.Date) alkupvm;
     }
 
     public void setAlkupvm(Date alkupvm) {
         this.alkupvm = alkupvm;
     }
 
-    public Date getLoppupvm() {
-        return loppupvm;
+    public java.sql.Date getLoppupvm() {
+        return (java.sql.Date) loppupvm;
     }
 
     public void setLoppupvm(Date loppupvm) {

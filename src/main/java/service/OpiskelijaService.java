@@ -3,10 +3,11 @@ package service;
 import java.util.List;
 
 import model.Opiskelija;
+import model.Kurssi;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
+import org.hibernate.query.Query;
 
 import util.HibernateSessionFactoryManager;
 
@@ -76,4 +77,5 @@ public class OpiskelijaService {
             throw e;
         }
     }
+
 }

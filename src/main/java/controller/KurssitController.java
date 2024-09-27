@@ -28,16 +28,17 @@ public class KurssitController {
     @FXML private Button CoursePageSearchButton;
     @FXML private Button TakaisinButton;
     @FXML private Text tunnusField;
-    @FXML private TextField nimiField;
+    @FXML private Text nimiField;
     @FXML private Text opettajaField;
-    @FXML private TextField aloitusPvmField;
-    @FXML private TextField lopetusPvmField;
+    @FXML private Text aloitusPvmField;
+    @FXML private Text lopetusPvmField;
     @FXML private TextArea kuvausTextArea;
     @FXML private Button editSaveButton;
 
+    @FXML private Button createNewCourseButton;
+
     private KurssiService kurssiService;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    private boolean isEditing = false;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
 
     @FXML
@@ -51,35 +52,26 @@ public class KurssitController {
             }
         });
 
-        setFieldsEditable(false);
-    }
-
-    private void setFieldsEditable(boolean editable) {
-        nimiField.setEditable(editable);
-        aloitusPvmField.setEditable(editable);
-        lopetusPvmField.setEditable(editable);
-        kuvausTextArea.setEditable(editable);
+        kuvausTextArea.setEditable(false);
     }
 
     private void loadAllCourses() {
+        System.out.println("loading courses");
         List<Kurssi> kurssit = kurssiService.getAllKurssit();
         ObservableList<Kurssi> observableKurssit = FXCollections.observableArrayList(kurssit);
         CourseListView.setItems(observableKurssit);
+
+
     }
 
     @FXML
     private void handleEditSave() {
-        if (isEditing) {
-            // Save functionality
-            saveCourseChanges();
-            setFieldsEditable(false);
-            editSaveButton.setText("Muokkaa");
+        Kurssi selectedKurssi = CourseListView.getSelectionModel().getSelectedItem();
+        if (selectedKurssi != null) {
+            openUusiKurssiWindow(selectedKurssi);
         } else {
-            // Edit functionality
-            setFieldsEditable(true);
-            editSaveButton.setText("Tallenna");
+            showAlert("Valitse kurssi ensin");
         }
-        isEditing = !isEditing;
     }
 
     @FXML
@@ -107,6 +99,48 @@ public class KurssitController {
         }
     }
 
+    private void openUusiKurssiWindow(Kurssi kurssi) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lisaaKurssi.fxml"));
+            Parent root = loader.load();
+
+            UusiKurssiController controller = loader.getController();
+            controller.initData(kurssi); // kurssi may be null for new course
+            controller.setKurssitController(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(kurssi == null ? "Luo uusi kurssi" : "Muokkaa kurssia");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Virhe avattaessa kurssi-ikkunaa");
+        }
+    }
+
+
+    public void refreshCourses(Kurssi updatedKurssi) {
+        loadAllCourses();
+        if (updatedKurssi != null) {
+            for (Kurssi kurssi : CourseListView.getItems()) {
+                if (kurssi.getKurssi_id().equals(updatedKurssi.getKurssi_id())) {
+                    CourseListView.getSelectionModel().select(kurssi);
+                    displayCourseInfo(kurssi);
+                    break;
+                }
+            }
+        }
+        CourseListView.refresh();
+    }
+
+    @FXML
+    private void handleCreateNewCourse() {
+        openUusiKurssiWindow(null); // Passing null indicates creating a new course
+    }
+
+
+
+
     @FXML
     private void navigateBackwards(ActionEvent event) {
         try {
@@ -117,23 +151,6 @@ public class KurssitController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void saveCourseChanges() {
-        Kurssi selectedKurssi = CourseListView.getSelectionModel().getSelectedItem();
-        if (selectedKurssi != null) {
-            try {
-                selectedKurssi.setNimi(nimiField.getText());
-                selectedKurssi.setAlkupvm(dateFormat.parse(aloitusPvmField.getText()));
-                selectedKurssi.setLoppupvm(dateFormat.parse(lopetusPvmField.getText()));
-                selectedKurssi.setKuvaus(kuvausTextArea.getText());
-
-                kurssiService.updateKurssi(selectedKurssi.getKurssi_id(), selectedKurssi);
-                loadAllCourses();
-            } catch (ParseException e) {
-                showAlert("Väärä formaatti päivämäärälle käytä dd.MM.yyyy");
-            }
         }
     }
 
