@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -10,36 +10,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentInfoController" stylesheets="@StudentInfoStyles.css">
+<?import javafx.scene.control.TableColumn?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@StudentInfoStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentInfoController">
    <children>
-      <Text layoutX="450.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilasrekisteri" textAlignment="CENTER" textOrigin="CENTER">
+      <Text layoutX="417.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilasrekisteri" textAlignment="CENTER" textOrigin="CENTER">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button">
+      <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="680.0" layoutY="14.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
-      <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" styleClass="logout-button" />
-      <Text layoutX="40.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilaan tiedot" styleClass="info-label-title">
+      <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
+      <Text layoutX="40.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="info-label-title" text="Oppilaan tiedot">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Text>
-      <ListView fx:id="StudentListView" layoutX="480.0" layoutY="170.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view" />
-      <VBox layoutX="40.0" layoutY="170.0" prefHeight="200.0" prefWidth="300.0" styleClass="info-window">
+      <TableView fx:id="StudentTableView" layoutX="480.0" layoutY="170.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view" >
+         <columns>
+            <TableColumn fx:id="idColumn" text="Oppilas ID" />
+            <TableColumn fx:id="firstNameColumn" text="Etunimi" />
+            <TableColumn fx:id="lastNameColumn" text="Sukunimi" />
+         </columns>
+      </TableView>
+      <VBox layoutX="40.0" layoutY="170.0" prefHeight="200.0" prefWidth="356.0" styleClass="info-window">
          <children>
-            <Label text="Nimi:" styleClass="info-label" />
-            <Label text="Sähköposti:" styleClass="info-label" />
-            <Label text="Puhelinnumero:" styleClass="info-label" />
+            <Label styleClass="info-label" text="Nimi:" />
+            <Label styleClass="info-label" text="Sähköposti:" />
+            <Label styleClass="info-label" text="Puhelinnumero:" />
+            <Label styleClass="info-label" text="Huoltaja:" />
          </children>
       </VBox>
       <TextField fx:id="SearchTextField" layoutX="480.0" layoutY="110.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
-      <Button fx:id="OppilasPageSearchButton" layoutX="700.0" layoutY="110.0" mnemonicParsing="false" onAction="#searchOppilas" prefHeight="22.0" prefWidth="55.0" text="Hae" styleClass="search-button" />
-      <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" styleClass="back-button">
+      <Button fx:id="OppilasPageSearchButton" layoutX="700.0" layoutY="110.0" mnemonicParsing="false" onAction="#searchOppilas" prefHeight="22.0" prefWidth="55.0" styleClass="search-button" text="Hae" />
+      <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="17.0" />
          </font>

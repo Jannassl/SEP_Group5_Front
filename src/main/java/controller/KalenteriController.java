@@ -7,10 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.KirjautunutKayttaja;
 
 import java.io.IOException;
 
-public class TapahtumatController {
+public class KalenteriController {
 
     @FXML
     private Button AllEvents;
@@ -35,6 +36,8 @@ public class TapahtumatController {
 
     @FXML
     void CloseProgram(ActionEvent event) {
+        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
             Parent root = loader.load();
