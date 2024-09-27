@@ -4,20 +4,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfiiliController" stylesheets="@ProfiiliStyles.css">
+<?import javafx.scene.layout.Priority?>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@ProfiiliStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfiiliController">
     <children>
         <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
-        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" styleClass="logout-button" />
-        <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" styleClass="back-button"/>
+        <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="905.0" layoutY="14.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
+        <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0" />
       <Label layoutX="450.0" layoutY="18.0" text="Profiili" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view-border" />
+        <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true" styleClass="image-view-border" />
+        <HBox layoutX="20.0" layoutY="300.0" prefHeight="259.0" prefWidth="414.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="Opettaja Id" />
+                        <Label text="Etunimi" />
+                        <Label text="Sukunimi" />
+                        <Label text="Sähköposti" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label text="Label" />
+                        <Label text="Label" />
+                        <Label text="Label" />
+                    </children>
+                </VBox>
+            </children>
+            <HBox.hgrow>
+                <Priority>ALWAYS</Priority>
+                <Priority>ALWAYS</Priority>
+            </HBox.hgrow>
+        </HBox>
     </children>
 
 

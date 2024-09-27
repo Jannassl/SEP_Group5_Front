@@ -6,18 +6,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
 public class ProfiiliController {
 
     @FXML
+    private ImageView imageView;
+    @FXML
     private Button LogOutButton;
+
 
     @FXML
     private Button TakaisinButton;
+
+    public void initialize() {
+        Image image = new Image(getClass().getResource("/defaultProfilePic.jpg").toExternalForm());
+        imageView.setImage(image);
+    }
 
     @FXML
     void CloseProgram(ActionEvent event) {
