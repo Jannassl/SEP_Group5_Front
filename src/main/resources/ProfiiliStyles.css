@@ -29,8 +29,7 @@
 }
 
 .image-view-border {
-    -fx-border-color: #000000; /* Black border */
-    -fx-border-width: 2px; /* Border width */
-    -fx-border-radius: 5px; /* Rounded corners */
-    -fx-padding: 5px; /* Padding inside the border */
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
 }
