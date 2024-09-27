@@ -56,5 +56,6 @@
             </Label>
               </children>
           </VBox>
+      <Button fx:id="ProfiiliMuokkaaButton" layoutX="764.0" layoutY="18.0" mnemonicParsing="false" onAction="#muokkaaProfiilia" prefHeight="39.0" prefWidth="90.0" text="Muokkaa" />
     </children>
 </AnchorPane>

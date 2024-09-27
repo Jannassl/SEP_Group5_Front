@@ -20,6 +20,8 @@ public class ProfiiliController {
     @FXML
     private ImageView imageView;
     @FXML
+    private Button ProfiiliMuokkaaButton;
+    @FXML
     private Button LogOutButton;
     @FXML
     private Label OpettajaIdLabel;
@@ -46,6 +48,10 @@ public class ProfiiliController {
             SahkopostiLabel.setText("Sähköposti: "+ currentOpettaja.getSahkoposti());
 
         }
+    }
+    @FXML
+    void muokkaaProfiilia(ActionEvent event) {
+
     }
 
     @FXML
