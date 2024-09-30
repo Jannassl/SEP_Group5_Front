@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 
@@ -14,13 +15,10 @@ import java.io.IOException;
 public class KalenteriController {
 
     @FXML
-    private Button AllEvents;
-
-    @FXML
     private Button LogOutButton;
 
     @FXML
-    private Button MonthlyButton;
+    private Button CoursePageSearchButton;
 
     @FXML
     private Button ProfiiliButton;
@@ -29,10 +27,7 @@ public class KalenteriController {
     private Button TakaisinButton;
 
     @FXML
-    private Button TodayButton;
-
-    @FXML
-    private Button WeeklyButton;
+    private TextField SearchTextField;
 
     @FXML
     void CloseProgram(ActionEvent event) {
@@ -47,26 +42,6 @@ public class KalenteriController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    void filterByMonth(ActionEvent event) {
-
-    }
-
-    @FXML
-    void filterByToday(ActionEvent event) {
-
-    }
-
-    @FXML
-    void filterByWeekly(ActionEvent event) {
-
-    }
-
-    @FXML
-    void getAllEvents(ActionEvent event) {
-
     }
 
     @FXML
@@ -95,4 +70,9 @@ public class KalenteriController {
         }
     }
 
+    @FXML
+    void searchCourse(ActionEvent event) {
+        String searchText = SearchTextField.getText();
+        // Implement search functionality here
+    }
 }
