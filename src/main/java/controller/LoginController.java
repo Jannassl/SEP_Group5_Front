@@ -45,7 +45,7 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            showAlert("Kirjautuminen epäonnistui", "Virheelliset tunnukset", "Syötetty käyttäjänimesi tai salasanasi oli väärä, kokeile uudelleen");
+            showAlert("Kirjautuminen epäonnistui", "Virheelliset tunnukset", "Syötetty käyttäjänimi tai salasana on väärä, kokeile uudelleen!");
         }
     }
 
