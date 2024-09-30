@@ -13,6 +13,7 @@ import java.io.IOException;
 
 public class KalenteriController {
 
+    public Button NewEvent;
     @FXML
     private Button AllEvents;
 
@@ -95,4 +96,15 @@ public class KalenteriController {
         }
     }
 
+    public void newEvent(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lisaaOppitunti.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

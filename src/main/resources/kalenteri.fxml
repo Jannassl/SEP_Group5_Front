@@ -52,6 +52,11 @@
                   <Font size="14.0" />
                </font>
             </Button>
+             <Button fx:id="NewEvent" mnemonicParsing="false" onAction="#newEvent" prefHeight="25.0" prefWidth="90.0" text="Lisää oppitunti" styleClass="All-Button">
+                 <font>
+                     <Font size="14.0" />
+                 </font>
+             </Button>
          </children>
       </HBox>
     </children>
