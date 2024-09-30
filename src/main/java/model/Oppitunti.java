@@ -3,7 +3,9 @@ package model;
 
 import javax.persistence.*;
 
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "oppitunti")
@@ -16,11 +18,11 @@ public class Oppitunti {
     @JoinColumn(name = "kurssi_id")
     private Kurssi kurssi;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date alkuaika;
+    @Column(name = "alkuaika")
+    private LocalDateTime alkuaika;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date loppuaika;
+    @Column(name = "loppuaika")
+    private LocalDateTime loppuaika;
 
     // Getterit ja setterit
     public Long getOppitunti_id() {
@@ -39,19 +41,19 @@ public class Oppitunti {
         this.kurssi = kurssi;
     }
 
-    public Date getAlkuaika() {
+    public LocalDateTime getAlkuaika() {
         return alkuaika;
     }
 
-    public void setAlkuaika(Date alkuaika) {
+    public void setAlkuaika(LocalDateTime alkuaika) {
         this.alkuaika = alkuaika;
     }
 
-    public Date getLoppuaika() {
+    public LocalDateTime getLoppuaika() {
         return loppuaika;
     }
 
-    public void setLoppuaika(Date loppuaika) {
+    public void setLoppuaika(LocalDateTime loppuaika) {
         this.loppuaika = loppuaika;
     }
 }

@@ -6,67 +6,79 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
+import model.Oppitunti;
+import service.OppituntiService;
+import view.PaivanOppitunnitList;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.WeekFields;
+import java.util.List;
+import java.util.Locale;
 
 public class KalenteriController {
 
     @FXML
-    private Button AllEvents;
-
+    public Button NewEvent;
+    @FXML
+    public ListView<PaivanOppitunnitList> dayListView;
+    @FXML
+    private Button PreviousWeekButton;
+    @FXML
+    private Button CurrentWeekButton;
+    @FXML
+    private Button NextWeekButton;
+    @FXML
+    private Button ProfiiliButton;
+    @FXML
+    private Button TakaisinButton;
     @FXML
     private Button LogOutButton;
 
-    @FXML
-    private Button MonthlyButton;
+    private OppituntiService oppituntiService;
+    private LocalDate currentWeekStart;
 
     @FXML
-    private Button ProfiiliButton;
+    public void initialize() {
+        oppituntiService = new OppituntiService();
+        currentWeekStart = LocalDate.now().with(WeekFields.of(Locale.getDefault()).dayOfWeek(), 1);
+        loadWeekView(currentWeekStart);
+    }
 
-    @FXML
-    private Button TakaisinButton;
+    private void loadWeekView(LocalDate weekStart) {
+        dayListView.getItems().clear();
 
-    @FXML
-    private Button TodayButton;
+        for (int i = 0; i < 7; i++) {
+            LocalDate currentDate = weekStart.plusDays(i);
+            LocalDateTime dayStart = currentDate.atStartOfDay();
+            LocalDateTime dayEnd = currentDate.plusDays(1).atStartOfDay();
 
-    @FXML
-    private Button WeeklyButton;
-
-    @FXML
-    void CloseProgram(ActionEvent event) {
-        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            List<Oppitunti> dayOppitunnit = oppituntiService.getOppitunnitBetweenDates(dayStart, dayEnd);
+            PaivanOppitunnitList paivanLista = new PaivanOppitunnitList(dayOppitunnit, currentDate);
+            dayListView.getItems().add(paivanLista);
         }
     }
 
     @FXML
-    void filterByMonth(ActionEvent event) {
-
+    void showPreviousWeek(ActionEvent event) {
+        currentWeekStart = currentWeekStart.minusWeeks(1);
+        loadWeekView(currentWeekStart);
     }
 
     @FXML
-    void filterByToday(ActionEvent event) {
-
+    void showCurrentWeek(ActionEvent event) {
+        currentWeekStart = LocalDate.now().with(WeekFields.of(Locale.getDefault()).dayOfWeek(), 1);
+        loadWeekView(currentWeekStart);
     }
 
     @FXML
-    void filterByWeekly(ActionEvent event) {
-
-    }
-
-    @FXML
-    void getAllEvents(ActionEvent event) {
-
+    void showNextWeek(ActionEvent event) {
+        currentWeekStart = currentWeekStart.plusWeeks(1);
+        loadWeekView(currentWeekStart);
     }
 
     @FXML
@@ -95,4 +107,31 @@ public class KalenteriController {
         }
     }
 
+    @FXML
+    void newEvent(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lisaaOppitunti.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void CloseProgram(ActionEvent event) {
+        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
