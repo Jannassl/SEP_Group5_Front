@@ -21,28 +21,30 @@ import java.io.IOException;
 import java.util.List;
 
 public class StudentInfoController {
+    @FXML
+    private Label nimiLabel;
+    @FXML
+    private Label sahkopostiLabel;
+    @FXML
+    private Label puhelinnumeroLabel;
+    @FXML
+    private Label huoltajaLabel;
 
     @FXML
     private Button LogOutButton;
-
     @FXML
     private Button OppilasPageSearchButton;
-
     @FXML
     private Button ProfiiliButton;
-
     @FXML
     private Button TakaisinButton;
 
     @FXML
     private TableView<Opiskelija> StudentTableView;
-
     @FXML
     private TableColumn<Opiskelija, Long> idColumn;
-
     @FXML
     private TableColumn<Opiskelija, String> firstNameColumn;
-
     @FXML
     private TableColumn<Opiskelija, String> lastNameColumn;
 
@@ -70,6 +72,9 @@ public class StudentInfoController {
 
         // Add listener to SearchTextField
         SearchTextField.textProperty().addListener((observable, oldValue, newValue) -> filterStudentList(newValue));
+
+        // Add listener to StudentTableView
+        StudentTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showStudentDetails(newValue));
     }
 
     private void loadOpiskelijat() {
@@ -119,10 +124,6 @@ public class StudentInfoController {
         }
     }
 
-    @FXML
-    void searchOppilas(ActionEvent event) {
-
-    }
     private void filterStudentList(String searchText) {
         filteredData.setPredicate(opiskelija -> {
             if (searchText == null || searchText.isEmpty()) {
@@ -138,4 +139,17 @@ public class StudentInfoController {
         });
     }
 
+    private void showStudentDetails(Opiskelija opiskelija) {
+        if (opiskelija != null) {
+            nimiLabel.setText("Nimi: "+ opiskelija.getEtunimi() + " " + opiskelija.getSukunimi());
+            sahkopostiLabel.setText("Sähköposti: "+opiskelija.getSahkoposti());
+            puhelinnumeroLabel.setText("Puhelinnumero: "+ opiskelija.getPuhelinnumero());
+            //huoltajaLabel.setText(opiskelija.getHuoltaja());
+        } else {
+            nimiLabel.setText("");
+            sahkopostiLabel.setText("");
+            puhelinnumeroLabel.setText("");
+            huoltajaLabel.setText("");
+        }
+    }
 }

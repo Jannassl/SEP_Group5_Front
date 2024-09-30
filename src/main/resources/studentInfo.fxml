@@ -39,10 +39,10 @@
       </TableView>
       <VBox layoutX="40.0" layoutY="170.0" prefHeight="200.0" prefWidth="356.0" styleClass="info-window">
          <children>
-            <Label styleClass="info-label" text="Nimi:" />
-            <Label styleClass="info-label" text="Sähköposti:" />
-            <Label styleClass="info-label" text="Puhelinnumero:" />
-            <Label styleClass="info-label" text="Huoltaja:" />
+            <Label fx:id="nimiLabel" styleClass="info-label" text="Nimi:" />
+            <Label fx:id="sahkopostiLabel" styleClass="info-label" text="Sähköposti:" />
+            <Label fx:id="puhelinnumeroLabel" styleClass="info-label" text="Puhelinnumero:" />
+            <Label fx:id="huoltajaLabel" styleClass="info-label" text="Huoltaja:" />
          </children>
       </VBox>
       <TextField fx:id="SearchTextField" layoutX="480.0" layoutY="110.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
