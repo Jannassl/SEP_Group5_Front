@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 
 public class KurssitController {
 
+    @FXML private Button deleteCourseButton;
     @FXML private Button ProfiiliButton;
     @FXML private Button LogOutButton;
     @FXML private ListView<Kurssi> CourseListView;
@@ -65,10 +66,10 @@ public class KurssitController {
     }
 
     @FXML
-    private void handleEditSave() {
+    private void handleEditSave(ActionEvent event) {
         Kurssi selectedKurssi = CourseListView.getSelectionModel().getSelectedItem();
         if (selectedKurssi != null) {
-            openUusiKurssiWindow(selectedKurssi);
+            openUusiKurssiWindow(event, selectedKurssi);
         } else {
             showAlert("Valitse kurssi ensin");
         }
@@ -99,7 +100,8 @@ public class KurssitController {
         }
     }
 
-    private void openUusiKurssiWindow(Kurssi kurssi) {
+    private void openUusiKurssiWindow(ActionEvent event, Kurssi kurssi) {
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/lisaaKurssi.fxml"));
             Parent root = loader.load();
@@ -108,7 +110,7 @@ public class KurssitController {
             controller.initData(kurssi); // kurssi may be null for new course
             controller.setKurssitController(this);
 
-            Stage stage = new Stage();
+            Stage stage =  (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle(kurssi == null ? "Luo uusi kurssi" : "Muokkaa kurssia");
             stage.show();
@@ -134,8 +136,8 @@ public class KurssitController {
     }
 
     @FXML
-    private void handleCreateNewCourse() {
-        openUusiKurssiWindow(null); // Passing null indicates creating a new course
+    private void handleCreateNewCourse(ActionEvent event) {
+        openUusiKurssiWindow(event,null); // Passing null indicates creating a new course
     }
 
 
@@ -169,5 +171,11 @@ public class KurssitController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void handleDeleteCourse(ActionEvent actionEvent) {
+        Kurssi selectedKurssi = CourseListView.getSelectionModel().getSelectedItem();
+        kurssiService.deleteKurssi(selectedKurssi.getKurssi_id());
+        refreshCourses(selectedKurssi);
     }
 }

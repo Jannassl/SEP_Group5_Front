@@ -60,6 +60,7 @@
 
             <Button fx:id="editSaveButton" onAction="#handleEditSave" text="Muokkaa" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
             <Button fx:id="createNewCourseButton" layoutX="150.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateNewCourse" prefHeight="25.0" prefWidth="120.0" text="Luo uusi kurssi" GridPane.columnIndex="0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button fx:id="deleteCourseButton" layoutX="150.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeleteCourse" prefHeight="25.0" prefWidth="120.0" text="Poista kurssi" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
          </children>
 
 
