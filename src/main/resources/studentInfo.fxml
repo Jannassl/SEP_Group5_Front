@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.TableColumn?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@StudentInfoStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentInfoController">
    <children>
       <Text layoutX="417.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Oppilasrekisteri" textAlignment="CENTER" textOrigin="CENTER">
@@ -30,7 +30,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Text>
-      <TableView fx:id="StudentTableView" layoutX="480.0" layoutY="170.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view" >
+      <TableView fx:id="StudentTableView" layoutX="480.0" layoutY="170.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view">
          <columns>
             <TableColumn fx:id="idColumn" text="Oppilas ID" />
             <TableColumn fx:id="firstNameColumn" text="Etunimi" />
@@ -46,7 +46,7 @@
          </children>
       </VBox>
       <TextField fx:id="SearchTextField" layoutX="480.0" layoutY="110.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
-      <Button fx:id="OppilasPageSearchButton" layoutX="700.0" layoutY="110.0" mnemonicParsing="false" onAction="#searchOppilas" prefHeight="22.0" prefWidth="55.0" styleClass="search-button" text="Hae" />
+
       <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="17.0" />
