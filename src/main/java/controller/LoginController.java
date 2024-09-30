@@ -29,6 +29,12 @@ public class LoginController {
         String username = loginUsername.getText();
         String password = loginPassword.getText();
 
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Kirjautuminen epäonnistui", "Tyhjät kentät", "Käyttäjänimi ja salasana eivät voi olla tyhjiä.");
+            return;
+        }
+
         // Validate the user using OpettajaService
         Opettaja opettaja = opettajaService.login(username, password);
 
