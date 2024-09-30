@@ -5,7 +5,10 @@ public class KirjautunutKayttaja {
     private static KirjautunutKayttaja instance;
     private Opettaja opettaja;
 
-    private KirjautunutKayttaja() {}
+    private KirjautunutKayttaja() {
+        this.opettaja = null; // Ensure opettaja is initialized to null
+        System.out.println("KirjautunutKayttaja constructor called. opettaja: " + this.opettaja);
+    }
 
     public static KirjautunutKayttaja getInstance() {
         if (instance == null) {
@@ -15,6 +18,7 @@ public class KirjautunutKayttaja {
     }
 
     public Opettaja getOpettaja() {
+        System.out.println("getOpettaja called. opettaja: " + this.opettaja);
         return opettaja;
     }
 
@@ -24,5 +28,10 @@ public class KirjautunutKayttaja {
 
     public void clearOpettaja() {
         this.opettaja = null;
+    }
+
+    // Reset method for testing purposes
+    public static void resetInstance() {
+        instance = null;
     }
 }
