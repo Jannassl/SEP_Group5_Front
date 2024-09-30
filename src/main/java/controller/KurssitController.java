@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import model.KirjautunutKayttaja;
 import model.Kurssi;
 import service.KurssiService;
 
@@ -81,9 +82,18 @@ public class KurssitController {
     }
 
     @FXML
-    private void CloseProgram() {
-        // Implement closing program logic
-        System.exit(0);
+    void CloseProgram(ActionEvent event) {
+        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
