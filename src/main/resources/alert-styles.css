@@ -1,8 +1,9 @@
 
 .dialog-pane .header-panel .label {
     -fx-font-size: 20px;
-    -fx-font-color: #000000;
+    -fx-text-fill: #ef0606;
     -fx-alignment: center;
+    -fx-underline: true;
 }
 
 .dialog-pane .content.label {
