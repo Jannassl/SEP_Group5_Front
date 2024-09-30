@@ -72,7 +72,7 @@
             </rowConstraints>
         </GridPane>
 
-        <TextField fx:id="SearchTextField" layoutX="480.0" layoutY="110.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae opiskelijaa" styleClass="search-text" />
+        <TextField fx:id="SearchTextField" layoutX="480.0" layoutY="110.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae kurssia" styleClass="search-text" />
         <Button fx:id="CoursePageSearchButton" layoutX="700.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleSearchStudent" prefHeight="22.0" prefWidth="55.0" styleClass="search-button" text="Hae" />
         <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
             <font>

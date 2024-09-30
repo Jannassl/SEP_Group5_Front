@@ -1,13 +1,18 @@
-// src/test/java/model/KurssiTest.java
 package model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class KurssiTest {
+
+    // Example method to convert java.util.Date to java.sql.Date
+    private Date convertUtilToSql(java.util.Date utilDate) {
+        return new Date(utilDate.getTime());
+    }
 
     @Test
     void getKurssi_id() {
@@ -53,34 +58,34 @@ class KurssiTest {
 
     @Test
     void getAlkupvm() {
-        Date date = new Date();
+        java.util.Date utilDate = new java.util.Date();
         Kurssi kurssi = new Kurssi();
-        kurssi.setAlkupvm(date);
-        assertEquals(date, kurssi.getAlkupvm());
+        kurssi.setAlkupvm(convertUtilToSql(utilDate));
+        assertEquals(convertUtilToSql(utilDate), kurssi.getAlkupvm());
     }
 
     @Test
     void setAlkupvm() {
-        Date date = new Date();
+        java.util.Date utilDate = new java.util.Date();
         Kurssi kurssi = new Kurssi();
-        kurssi.setAlkupvm(date);
-        assertEquals(date, kurssi.getAlkupvm());
+        kurssi.setAlkupvm(convertUtilToSql(utilDate));
+        assertEquals(convertUtilToSql(utilDate), kurssi.getAlkupvm());
     }
 
     @Test
     void getLoppupvm() {
-        Date date = new Date();
+        java.util.Date utilDate = new java.util.Date();
         Kurssi kurssi = new Kurssi();
-        kurssi.setLoppupvm(date);
-        assertEquals(date, kurssi.getLoppupvm());
+        kurssi.setLoppupvm(convertUtilToSql(utilDate));
+        assertEquals(convertUtilToSql(utilDate), kurssi.getLoppupvm());
     }
 
     @Test
     void setLoppupvm() {
-        Date date = new Date();
+        java.util.Date utilDate = new java.util.Date();
         Kurssi kurssi = new Kurssi();
-        kurssi.setLoppupvm(date);
-        assertEquals(date, kurssi.getLoppupvm());
+        kurssi.setLoppupvm(convertUtilToSql(utilDate));
+        assertEquals(convertUtilToSql(utilDate), kurssi.getLoppupvm());
     }
 
     @Test
@@ -103,7 +108,8 @@ class KurssiTest {
     void testToString() {
         Opettaja opettaja = new Opettaja();
         opettaja.setOpettaja_id(1L);
-        Kurssi kurssi = new Kurssi("Test Course", "Test Description", new Date(), new Date(), opettaja);
+        java.util.Date utilDate = Calendar.getInstance().getTime();
+        Kurssi kurssi = new Kurssi("Test Course", "Test Description", convertUtilToSql(utilDate), convertUtilToSql(utilDate), opettaja);
         String expected = "Kurssi{kurssi_id=null, nimi='Test Course', kuvaus='Test Description', alkupvm=" + kurssi.getAlkupvm() + ", loppupvm=" + kurssi.getLoppupvm() + ", opettaja=1}";
         assertEquals(expected, kurssi.toString());
     }
