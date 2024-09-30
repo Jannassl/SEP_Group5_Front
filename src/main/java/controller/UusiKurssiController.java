@@ -114,7 +114,7 @@ public class UusiKurssiController {
     }
 
     @FXML
-    private void handleSave() {
+    private void handleSave(ActionEvent event) {
         if (!validateInputs()) {
             return;
         }
@@ -140,8 +140,7 @@ public class UusiKurssiController {
                 kurssitController.refreshCourses(currentKurssi);
             }
 
-
-            closeWindow();
+            navigateBackwards(event);
         } catch (Exception e) {
             showAlert("Virhe tallennettaessa kurssia: " + e.getMessage());
         }
@@ -197,7 +196,7 @@ public class UusiKurssiController {
 
 
     public void handleEditSave(ActionEvent actionEvent) {
-        handleSave();
+        handleSave(actionEvent);
     }
 
     public void searchCourse(ActionEvent actionEvent) { }
