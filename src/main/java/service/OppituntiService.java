@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import model.Oppitunti;
@@ -82,6 +84,18 @@ public class OppituntiService {
             Query<Oppitunti> query = session.createQuery(
                     "FROM Oppitunti o WHERE o.kurssi.kurssi_id = :kurssiId", Oppitunti.class);
             query.setParameter("kurssiId", kurssiId);
+            return query.list();
+        }
+    }
+
+    public List<Oppitunti> getOppitunnitBetweenDates(LocalDateTime startDate, LocalDateTime endDate) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Oppitunti> query = session.createQuery(
+                    "FROM Oppitunti o WHERE o.alkuaika >= :startDate AND o.alkuaika < :endDate ORDER BY o.alkuaika",
+                    Oppitunti.class
+            );
+            query.setParameter("startDate", startDate);
+            query.setParameter("endDate", endDate);
             return query.list();
         }
     }

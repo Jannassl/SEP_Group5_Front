@@ -45,7 +45,7 @@
                 <Label styleClass="info-label" text="Päivämäärä:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <DatePicker fx:id="pvmField" prefHeight="26.0" prefWidth="251.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label styleClass="info-label" text="Kellonaika:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                <TextField fx:id="kellonaikaField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="kellonaikaField"  promptText="Syötä kellonaika muodossa hh:mm-hh:mm" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
             <rowConstraints>
                 <RowConstraints />

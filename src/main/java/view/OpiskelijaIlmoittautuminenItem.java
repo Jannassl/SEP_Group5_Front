@@ -23,7 +23,7 @@ public class OpiskelijaIlmoittautuminenItem extends ListCell<Opiskelija> {
     private Opiskelija opiskelija;
     private final KurssiIlmoittautuminenService kis;
     private final Kurssi kurssi;
-    private List<KurssiIlmoittautuminen> ilmoittautumiset;
+    private final List<KurssiIlmoittautuminen> ilmoittautumiset;
 
     public OpiskelijaIlmoittautuminenItem(KurssiIlmoittautuminenService kis, Kurssi kurssi, List<KurssiIlmoittautuminen> ilmoittautumiset) {
         super();
