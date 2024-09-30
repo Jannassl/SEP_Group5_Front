@@ -28,20 +28,7 @@
     -fx-background-color: #da5e4e; /* Salmon */
 }
 
-.search-button {
-    -fx-font-size: 14px;
-    -fx-background-color: #4CAF50; /* Light gray */
-    -fx-border-color: #000000; /* Dark gray */
-    -fx-border-radius: 25px;
-    -fx-border-width: 3px;
-    -fx-background-radius: 15px;
-    -fx-padding: 10px;
-    -fx-background-insets: 3px;
-}
 
-.search-button:hover {
-    -fx-background-color: #45a049; /* Slightly darker gray */
-}
 
 .back-button {
     -fx-font-size: 14px;
