@@ -45,17 +45,26 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            showAlert("Login Failed", "Invalid Credentials", "The username or password you entered is incorrect.");
+            showAlert("Kirjautuminen epäonnistui", "Virheelliset tunnukset", "Syötetty käyttäjänimesi tai salasanasi oli väärä, kokeile uudelleen");
         }
-
     }
+
     private void showAlert(String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
+
+        // Load and apply the custom stylesheet
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        Scene scene = alert.getDialogPane().getScene();
+        scene.getStylesheets().add(getClass().getResource("/alert-styles.css").toExternalForm());
+
+        stage.getScene().getRoot().setStyle("-fx-border-color: #060606; -fx-border-width: 3px; -fx-border-radius: 0 0 5 5px; -fx-background-radius: 15px;");
+        stage.setHeight(250);
+
+        alert.setGraphic(null);
+
         alert.showAndWait();
     }
-
-
 }

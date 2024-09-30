@@ -74,6 +74,10 @@ public class Opettaja {
         this.salasana = salasana;
     }
 
+    public String getNimi() {
+        return etunimi + " " + sukunimi;
+    }
+
     @Override
     public String toString() {
         return "Opettaja{" +

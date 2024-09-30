@@ -50,12 +50,12 @@ public class ProfiiliController {
         }
     }
     @FXML
-    void muokkaaProfiilia(ActionEvent event) {
+    public void muokkaaProfiilia(ActionEvent event) {
 
     }
 
     @FXML
-    void CloseProgram(ActionEvent event) {
+    public void CloseProgram(ActionEvent event) {
         KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
 
         try {
@@ -70,7 +70,7 @@ public class ProfiiliController {
     }
 
     @FXML
-    void navigateBackwards(ActionEvent event) {
+    public void navigateBackwards(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainMenu.fxml"));
             Parent root = loader.load();
