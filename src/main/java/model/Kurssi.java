@@ -65,16 +65,16 @@ public class Kurssi {
         this.kuvaus = kuvaus;
     }
 
-    public Date getAlkupvm() {
-        return alkupvm;
+    public java.sql.Date getAlkupvm() {
+        return (java.sql.Date) alkupvm;
     }
 
     public void setAlkupvm(Date alkupvm) {
         this.alkupvm = alkupvm;
     }
 
-    public Date getLoppupvm() {
-        return loppupvm;
+    public java.sql.Date getLoppupvm() {
+        return (java.sql.Date) loppupvm;
     }
 
     public void setLoppupvm(Date loppupvm) {
@@ -93,13 +93,6 @@ public class Kurssi {
     // toString-metodi
     @Override
     public String toString() {
-        return "Kurssi{" +
-                "kurssi_id=" + kurssi_id +
-                ", nimi='" + nimi + '\'' +
-                ", kuvaus='" + kuvaus + '\'' +
-                ", alkupvm=" + alkupvm +
-                ", loppupvm=" + loppupvm +
-                ", opettaja=" + (opettaja != null ? opettaja.getOpettaja_id() : null) +
-                '}';
+        return getNimi() + " " + "id: (" + getKurssi_id() + ")";
     }
 }

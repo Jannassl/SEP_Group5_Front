@@ -98,6 +98,11 @@ public class Opiskelija {
         this.opintosuoritukset = opintosuoritukset;
     }
 
+
+    public String getNimi() {
+        return etunimi + " " + sukunimi;
+    }
+
     // toString-metodi (voit halutessasi jättää pois suhdekentät)
     @Override
     public String toString() {

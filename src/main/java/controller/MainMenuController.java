@@ -57,6 +57,15 @@ public class MainMenuController {
 
     @FXML
     void openKurssitPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/kurssit.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -97,6 +106,8 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+
+
 
     /* NÄIN LISÄTÄÄN LISTVIEW KOHTAAN SISÄLTÖÄ
     @FXML
