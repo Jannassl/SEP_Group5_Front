@@ -14,8 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
+import model.Kurssi;
+import service.KurssiService;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
 public class MainMenuController {
     @FXML
@@ -23,7 +27,7 @@ public class MainMenuController {
     @FXML
     private Button KurssitButton;
     @FXML
-    private ListView<?> ListViewMainMenu;
+    private ListView<String> ListViewMainMenu;
     @FXML
     private Button LogOutButton;
     @FXML
@@ -32,8 +36,24 @@ public class MainMenuController {
     private Button ProfiiliButton;
     @FXML
     private Button TapahtumatButton;
+    private KurssiService kurssiService;
 
     public MainMenuController() {
+        this.kurssiService = new KurssiService();
+    }
+
+    @FXML
+    public void initialize() {
+        loadCurrentDaysKurssit();
+    }
+
+    private void loadCurrentDaysKurssit() {
+        LocalDate today = LocalDate.now();
+        List<Kurssi> kurssit = kurssiService.getKurssitByDate(today);
+
+        for (Kurssi kurssi : kurssit) {
+            ListViewMainMenu.getItems().add(kurssi.getNimi());
+        }
     }
 
     @FXML

@@ -6,9 +6,11 @@ import model.Kurssi;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
 import org.hibernate.query.Query;
 import util.HibernateSessionFactoryManager;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class KurssiService {
     private final SessionFactory sessionFactory;
@@ -74,6 +76,14 @@ public class KurssiService {
                 transaction.rollback();
             }
             throw e;
+        }
+    }
+    public List<Kurssi> getKurssitByDate(LocalDate date) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Kurssi> query = session.createQuery(
+                    "FROM Kurssi k WHERE k.alkupvm <= :date AND k.loppupvm >= :date", Kurssi.class);
+            query.setParameter("date", java.sql.Date.valueOf(date));
+            return query.list();
         }
     }
 
