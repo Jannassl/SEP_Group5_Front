@@ -49,8 +49,39 @@ public class OpettajaService {
             throw e;
         }
     }
-
+    // WITHOUT HASHING
     public Opettaja updateOpettaja(Long id, Opettaja opettaja) {
+        Transaction transaction = null;
+        try (Session session = sessionFactory.openSession()) {
+            transaction = session.beginTransaction();
+
+            Opettaja existingOpettaja = session.get(Opettaja.class, id);
+            if (existingOpettaja != null) {
+                existingOpettaja.setEtunimi(opettaja.getEtunimi());
+                existingOpettaja.setSukunimi(opettaja.getSukunimi());
+                existingOpettaja.setSahkoposti(opettaja.getSahkoposti());
+
+                // Store the plain text password for testing purposes
+                if (opettaja.getSalasana() != null && !opettaja.getSalasana().isEmpty()) {
+                    existingOpettaja.setSalasana(opettaja.getSalasana());
+                }
+
+                session.update(existingOpettaja);
+            }
+
+            transaction.commit();
+            return existingOpettaja;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            throw e;
+        }
+    }
+
+
+    // UPDATE OPETTAJA WITH HASH
+    /*public Opettaja updateOpettaja(Long id, Opettaja opettaja) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
@@ -78,7 +109,7 @@ public class OpettajaService {
             }
             throw e;
         }
-    }
+    }*/
 
     public void deleteOpettaja(Long id) {
         Transaction transaction = null;
@@ -96,8 +127,25 @@ public class OpettajaService {
             throw e;
         }
     }
-
     public Opettaja login(String email, String password) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Opettaja> query = session.createQuery(
+                    "FROM Opettaja o WHERE o.sahkoposti = :email", Opettaja.class);
+            query.setParameter("email", email);
+            Opettaja opettaja = query.uniqueResult();
+
+            // Directly compare the plain text password for testing purposes
+            if (opettaja != null && password.equals(opettaja.getSalasana())) {
+                return opettaja;
+            }
+            return null;
+        }
+    }
+
+
+
+    // KOMMENTOIN TÄMÄN KOSKA HASHING SEKOITTI LIIKAA
+    /*public Opettaja login(String email, String password) {
         try (Session session = sessionFactory.openSession()) {
             Query<Opettaja> query = session.createQuery(
                     "FROM Opettaja o WHERE o.sahkoposti = :email", Opettaja.class);
@@ -109,13 +157,10 @@ public class OpettajaService {
             }
             return null;
         }
+    }*/
+
+    private boolean verifyPassword(String inputPassword, String storedHash) {
+        return BCrypt.checkpw(inputPassword, storedHash);
     }
 
-    /*private boolean verifyPassword(String inputPassword, String storedHash) {
-        return BCrypt.checkpw(inputPassword, storedHash);
-    }*/
-    private boolean verifyPassword(String inputPassword, String storedHash) {
-        // Temporarily use plain text comparison for testing
-        return inputPassword.equals(storedHash);
-    }
 }
