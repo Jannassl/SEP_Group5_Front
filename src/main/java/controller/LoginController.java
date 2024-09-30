@@ -60,7 +60,6 @@ public class LoginController {
         Scene scene = alert.getDialogPane().getScene();
         scene.getStylesheets().add(getClass().getResource("/alert-styles.css").toExternalForm());
 
-        // Apply styles to the root node of the stage
         stage.getScene().getRoot().setStyle("-fx-border-color: #060606; -fx-border-width: 3px; -fx-border-radius: 0 0 5 5px; -fx-background-radius: 15px;");
         stage.setHeight(250);
 
