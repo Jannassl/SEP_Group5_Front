@@ -27,7 +27,9 @@ public class Oppitunti {
         return oppitunti_id;
     }
 
-    public void setOppitunti_id(Long oppitunti_id) {}
+    public void setOppitunti_id(Long oppitunti_id) {
+        this.oppitunti_id = oppitunti_id;
+    }
 
     public Kurssi getKurssi() {
         return kurssi;
