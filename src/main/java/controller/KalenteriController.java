@@ -41,12 +41,21 @@ public class KalenteriController {
 
     private OppituntiService oppituntiService;
     private LocalDate currentWeekStart;
+    public KalenteriController() {
+        this.oppituntiService = new OppituntiService();
+    }
 
     @FXML
     public void initialize() {
         oppituntiService = new OppituntiService();
         currentWeekStart = LocalDate.now().with(WeekFields.of(Locale.getDefault()).dayOfWeek(), 1);
         loadWeekView(currentWeekStart);
+    }
+    public List<Oppitunti> getTodayCourses() {
+        LocalDate today = LocalDate.now();
+        LocalDateTime dayStart = today.atStartOfDay();
+        LocalDateTime dayEnd = today.plusDays(1).atStartOfDay();
+        return oppituntiService.getOppitunnitBetweenDates(dayStart, dayEnd);
     }
 
     private void loadWeekView(LocalDate weekStart) {

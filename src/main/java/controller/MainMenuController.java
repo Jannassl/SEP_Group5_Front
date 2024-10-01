@@ -5,6 +5,8 @@
 
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +17,12 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 import model.Kurssi;
+import model.Oppitunti;
 import service.KurssiService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MainMenuController {
@@ -44,16 +48,15 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
-        loadCurrentDaysKurssit();
-    }
+        KalenteriController kalenteriController = new KalenteriController();
+        List<Oppitunti> todayCourses = kalenteriController.getTodayCourses();
 
-    private void loadCurrentDaysKurssit() {
-        LocalDate today = LocalDate.now();
-        List<Kurssi> kurssit = kurssiService.getKurssitByDate(today);
-
-        for (Kurssi kurssi : kurssit) {
-            ListViewMainMenu.getItems().add(kurssi.getNimi());
+        ObservableList<String> items = FXCollections.observableArrayList();
+        for (Oppitunti oppitunti : todayCourses) {
+            items.add(oppitunti.getKurssi().getNimi());
         }
+
+        ListViewMainMenu.setItems(items);
     }
 
     @FXML
