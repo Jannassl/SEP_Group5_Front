@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven3'
-        }
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -11,17 +11,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Code Coverage') {
             steps {
-                sh 'mvn jacoco:report'
+                bat 'mvn jacoco:report'
             }
         }
         stage('Publish Test Results') {
