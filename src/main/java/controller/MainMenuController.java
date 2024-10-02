@@ -40,6 +40,11 @@ public class MainMenuController {
     private Button ProfiiliButton;
     @FXML
     private Button TapahtumatButton;
+
+    @FXML
+    private Button LasnaolotButton;
+
+
     private KurssiService kurssiService;
 
     public MainMenuController() {
@@ -121,6 +126,18 @@ public class MainMenuController {
     void openTapahtumatPage(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/kalenteri.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    void openLasnaoloPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/poissaolot.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

@@ -65,7 +65,7 @@ public class KurssitController {
         });
     }
 
-    private void loadAllCourses() {
+    public void loadAllCourses() {
         System.out.println("loading courses");
         List<Kurssi> kurssit = kurssiService.getAllKurssit();
         ObservableList<Kurssi> observableKurssit = FXCollections.observableArrayList(kurssit);
@@ -83,8 +83,16 @@ public class KurssitController {
     }
 
     @FXML
-    private void openProfiiliPage() {
-        // Implement profile page opening logic
+    void openProfiiliPage(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/profiili.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -103,7 +111,7 @@ public class KurssitController {
     }
 
     @FXML
-    private void searchCourse() {
+    public void searchCourse() {
         String searchTerm = SearchTextField.getText().trim().toLowerCase();
         if (searchTerm.isEmpty()) {
             loadAllCourses();
@@ -168,7 +176,7 @@ public class KurssitController {
         }
     }
 
-    private void displayCourseInfo(Kurssi kurssi) {
+    public void displayCourseInfo(Kurssi kurssi) {
         tunnusField.setText(String.valueOf(kurssi.getKurssi_id()));
         nimiField.setText(kurssi.getNimi());
         opettajaField.setText(kurssi.getOpettaja().getNimi());

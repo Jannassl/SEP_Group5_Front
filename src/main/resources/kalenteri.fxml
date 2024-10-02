@@ -23,12 +23,12 @@
                         <Font size="27.0" />
                     </font>
                 </Text>
-                <Button fx:id="ProfiiliButton" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili">
+                <Button fx:id="ProfiiliButton" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button" text="Profiili">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="LogOutButton" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" />
+                <Button fx:id="LogOutButton" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0"  styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
             </HBox>
 
             <Line endX="1000.0" startX="0.0" />

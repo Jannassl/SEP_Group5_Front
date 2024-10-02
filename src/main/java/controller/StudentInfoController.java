@@ -66,14 +66,11 @@ public class StudentInfoController {
 
         loadOpiskelijat();
 
-        // Create the FilteredList once
         filteredData = new FilteredList<>(StudentTableView.getItems(), p -> true);
         StudentTableView.setItems(filteredData);
 
-        // Add listener to SearchTextField
         SearchTextField.textProperty().addListener((observable, oldValue, newValue) -> filterStudentList(newValue));
 
-        // Add listener to StudentTableView
         StudentTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showStudentDetails(newValue));
     }
 
@@ -85,7 +82,7 @@ public class StudentInfoController {
 
     @FXML
     void CloseProgram(ActionEvent event) {
-        KirjautunutKayttaja.getInstance().clearOpettaja(); // Clear the logged-in user
+        KirjautunutKayttaja.getInstance().clearOpettaja();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));

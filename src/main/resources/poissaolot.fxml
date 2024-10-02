@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@StudentInfoStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PoissaoloController">
+   <children>
+      <Text layoutX="452.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Läsnäolot" textAlignment="CENTER" textOrigin="CENTER">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" />
+      <Button fx:id="TakaisinButton" contentDisplay="RIGHT" layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <TableView fx:id="StudentTableView" layoutX="526.0" layoutY="179.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view">
+         <columns>
+            <TableColumn fx:id="idColumn" text="Oppilas ID" />
+            <TableColumn fx:id="firstNameColumn" text="Etunimi" />
+            <TableColumn fx:id="lastNameColumn" text="Sukunimi" />
+         </columns>
+      </TableView>
+      <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
+      <TableView fx:id="CourseTableView" layoutX="20.0" layoutY="183.0" prefHeight="303.0" prefWidth="459.0" styleClass="table-view">
+         <columns>
+            <TableColumn fx:id="courseNameColumn" text="Kurssin nimi" />
+            <TableColumn fx:id="courseDetailColumn" text="Opettaja" />
+            <TableColumn fx:id="courseTimeColumn" text="Ajankohta" />
+         </columns>
+      </TableView>
+      <TextField fx:id="CourseSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae kurssia" styleClass="search-text" />
+      <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="885.0" layoutY="24.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>

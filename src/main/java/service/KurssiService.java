@@ -10,7 +10,6 @@ import org.hibernate.query.Query;
 import util.HibernateSessionFactoryManager;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class KurssiService {
     private final SessionFactory sessionFactory;
