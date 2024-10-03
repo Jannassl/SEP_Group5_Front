@@ -30,14 +30,15 @@
          </columns>
       </TableView>
       <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
-      <TableView fx:id="CourseTableView" layoutX="20.0" layoutY="183.0" prefHeight="303.0" prefWidth="459.0" styleClass="table-view">
+      <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="183.0" prefHeight="303.0" prefWidth="459.0" styleClass="table-view">
          <columns>
-            <TableColumn fx:id="courseNameColumn" text="Kurssin nimi" />
-            <TableColumn fx:id="courseDetailColumn" text="Opettaja" />
-            <TableColumn fx:id="courseTimeColumn" text="Ajankohta" />
+            <TableColumn fx:id="courseNameColumn" text="Kurssi" />
+            <TableColumn fx:id="lectureDetailColumn" text="Opettaja" />
+            <TableColumn fx:id="lectureTimeColumn" text="Ajankohta" />
+            <TableColumn fx:id="lectureLocation" text="Sijainti"/>
          </columns>
       </TableView>
-      <TextField fx:id="CourseSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae kurssia" styleClass="search-text" />
+      <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae oppituntia" styleClass="search-text" />
       <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="14.0" />

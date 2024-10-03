@@ -4,7 +4,6 @@ package model;
 import javax.persistence.*;
 
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,6 +22,8 @@ public class Oppitunti {
 
     @Column(name = "loppuaika")
     private LocalDateTime loppuaika;
+    @Column(name= "sijainti")
+    private String sijainti;
 
     // Getterit ja setterit
     public Long getOppitunti_id() {
@@ -55,5 +56,13 @@ public class Oppitunti {
 
     public void setLoppuaika(LocalDateTime loppuaika) {
         this.loppuaika = loppuaika;
+    }
+
+    public void setSijainti(String sijainti) {
+        this.sijainti = sijainti;
+    }
+
+    public String getSijainti() {
+        return sijainti;
     }
 }

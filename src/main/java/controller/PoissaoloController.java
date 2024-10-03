@@ -15,56 +15,63 @@ import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 import model.Kurssi;
 import model.Opiskelija;
+import model.Oppitunti;
 import service.KurssiService;
 import service.OpiskelijaService;
+import service.OppituntiService;
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class PoissaoloController {
-    @FXML private TableView<Kurssi> CourseTableView;
+    @FXML private TableView<Kurssi> LectureTableView;
     @FXML private TableView<Opiskelija> StudentTableView;
     @FXML private TableColumn<Kurssi, String> courseNameColumn;
-    @FXML private TableColumn<Kurssi, String> courseDetailColumn;
-    @FXML private TableColumn<Kurssi, String> courseTimeColumn;
+    @FXML private TableColumn<Kurssi, String> lectureDetailColumn;
+    @FXML private TableColumn<Kurssi, String> lectureTimeColumn;
+    @FXML private TableColumn<Kurssi, String> lectureLocation;
     @FXML private TableColumn<Opiskelija, Long> idColumn;
     @FXML private TableColumn<Opiskelija, String> firstNameColumn;
     @FXML private TableColumn<Opiskelija, String> lastNameColumn;
-    @FXML private TextField CourseSearchField;
+    @FXML private TextField LectureSearchField;
     @FXML private TextField StudentSearchField;
     @FXML private Button TakaisinButton;
 
     private KurssiService kurssiService;
     private OpiskelijaService opiskelijaService;
-    private FilteredList<Kurssi> filteredCourseData;
+    private OppituntiService oppituntiService;
+    private FilteredList<Kurssi> filteredLectureData;
     private FilteredList<Opiskelija> filteredStudentData;
 
     public PoissaoloController (){
         this.kurssiService = new KurssiService();
+        this.oppituntiService = new OppituntiService();
         this.opiskelijaService = new OpiskelijaService();
     }
 
     @FXML
     private void initialize() {
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
-        courseDetailColumn.setCellValueFactory(new PropertyValueFactory<>("kuvaus"));
-        courseTimeColumn.setCellValueFactory(new PropertyValueFactory<>("alkupvm"));
+        lectureDetailColumn.setCellValueFactory(new PropertyValueFactory<>("kuvaus"));
+        lectureTimeColumn.setCellValueFactory(new PropertyValueFactory<>("alkupvm"));
         idColumn.setCellValueFactory(new PropertyValueFactory<>("opiskelija_id"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("etunimi"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("sukunimi"));
         loadAllCourses();
         loadOpiskelijat();
 
-        filteredCourseData = new FilteredList<>(CourseTableView.getItems(), p -> true);
-        CourseTableView.setItems(filteredCourseData);
+        filteredLectureData = new FilteredList<>(LectureTableView.getItems(), p -> true);
+        LectureTableView.setItems(filteredLectureData);
         filteredStudentData = new FilteredList<>(StudentTableView.getItems(), p -> true);
         StudentTableView.setItems(filteredStudentData);
 
         StudentSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterStudentList(newValue));
 
-        CourseSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterCourseData(newValue));
+        LectureSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterCourseData(newValue));
     }
     private void filterCourseData(String searchText) {
-        filteredCourseData.setPredicate(kurssi -> {
+        filteredLectureData.setPredicate(kurssi -> {
             if (searchText == null || searchText.isEmpty()) {
                 return true;
             }
@@ -89,8 +96,11 @@ public class PoissaoloController {
     public void loadAllCourses() {
         List<Kurssi> kurssit = kurssiService.getAllKurssit();
         ObservableList<Kurssi> observableKurssit = FXCollections.observableArrayList(kurssit);
-        CourseTableView.setItems(observableKurssit);
+        LectureTableView.setItems(observableKurssit);
+
     }
+
+
 
 
     @FXML

@@ -54,6 +54,7 @@
 
 
 
+
                 <Label styleClass="info-label" text="Kuvaus:" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.valignment="TOP" />
                 <TextArea fx:id="kuvausTextArea" prefHeight="100" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <DatePicker fx:id="aloitusPvmField" prefHeight="26.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
