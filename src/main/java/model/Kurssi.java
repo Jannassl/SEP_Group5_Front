@@ -41,6 +41,9 @@ public class Kurssi {
     }
 
     // Getters and Setters
+    public Long getOpettajaId() {
+        return opettaja != null ? opettaja.getOpettaja_id() : null;
+    }
     public Long getKurssi_id() {
         return kurssi_id;
     }

@@ -24,18 +24,18 @@
       </Button>
       <TableView fx:id="StudentTableView" layoutX="526.0" layoutY="179.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view">
          <columns>
-            <TableColumn fx:id="idColumn" text="Oppilas ID" />
-            <TableColumn fx:id="firstNameColumn" text="Etunimi" />
-            <TableColumn fx:id="lastNameColumn" text="Sukunimi" />
+            <TableColumn fx:id="idColumn" prefWidth="60.0" text="Oppilas ID" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="76.0" text="Etunimi" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="91.0" text="Sukunimi" />
+            <TableColumn fx:id="attendanceColumn" prefWidth="93.0" text="Läsnäolo" />
          </columns>
       </TableView>
       <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
-      <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="183.0" prefHeight="303.0" prefWidth="459.0" styleClass="table-view">
+      <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="179.0" prefHeight="303.0" prefWidth="336.0" styleClass="table-view">
          <columns>
-            <TableColumn fx:id="courseNameColumn" text="Kurssi" />
-            <TableColumn fx:id="lectureDetailColumn" text="Opettaja" />
-            <TableColumn fx:id="lectureTimeColumn" text="Ajankohta" />
-            <TableColumn fx:id="lectureLocation" text="Sijainti"/>
+            <TableColumn fx:id="courseNameColumn" prefWidth="125.0" text="Kurssi" />
+            <TableColumn fx:id="courseTeacherColumn" prefWidth="93.0" text="Opettaja ID" />
+            <TableColumn fx:id="lectureTimeColumn" prefWidth="117.0" text="Ajankohta" />
          </columns>
       </TableView>
       <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae oppituntia" styleClass="search-text" />
