@@ -38,6 +38,8 @@ public class PoissaoloController {
     @FXML private TextField LectureSearchField;
     @FXML private TextField StudentSearchField;
     @FXML private Button TakaisinButton;
+    @FXML
+    private Button SaveAttendanceButton;
 
     private KurssiService kurssiService;
     private OpiskelijaService opiskelijaService;
@@ -152,5 +154,9 @@ public class PoissaoloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    void saveAttendance(ActionEvent event) {
+
     }
 }
