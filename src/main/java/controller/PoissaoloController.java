@@ -19,11 +19,13 @@ import service.KurssiService;
 import service.OpiskelijaService;
 import service.OppituntiService;
 import service.KurssiIlmoittautuminenService;
+import view.CustomTableRow;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 
 public class PoissaoloController {
@@ -95,6 +97,7 @@ public class PoissaoloController {
                 nameListButton.setDisable(true); // Disable the button when no course is selected
             }
         });
+        oppituntiTableView.setRowFactory(tv -> new CustomTableRow());
 
         nameListButton.setDisable(true); // Initially disable the button
     }
@@ -111,6 +114,7 @@ public class PoissaoloController {
 
     private void loadOpiskelijat() {
         List<Oppitunti> oppitunnit = oppituntiService.getAllOppitunnit();
+        oppitunnit.sort(Comparator.comparing(Oppitunti::getOppitunti_id).reversed());
         ObservableList<Oppitunti> oppituntiObservableList = FXCollections.observableArrayList(oppitunnit);
         oppituntiTableView.setItems(oppituntiObservableList);
     }
