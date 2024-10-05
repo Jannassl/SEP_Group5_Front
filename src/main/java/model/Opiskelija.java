@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -30,18 +29,21 @@ public class Opiskelija {
     @OneToMany(mappedBy = "opiskelija", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Opintosuoritus> opintosuoritukset;
 
-    // Tyhjä konstruktori
+    @Transient
+    private boolean present;
+
+    // Constructors, getters, and setters
+
     public Opiskelija() {}
 
-    // Konstruktori ilman id:tä ja suhteita
     public Opiskelija(String etunimi, String sukunimi, String sahkoposti, String puhelinnumero) {
         this.etunimi = etunimi;
         this.sukunimi = sukunimi;
         this.sahkoposti = sahkoposti;
         this.puhelinnumero = puhelinnumero;
+        this.present = true; // Default value
     }
 
-    // Getterit ja setterit
     public Long getOpiskelija_id() {
         return opiskelija_id;
     }
@@ -98,12 +100,18 @@ public class Opiskelija {
         this.opintosuoritukset = opintosuoritukset;
     }
 
+    public boolean isPresent() {
+        return present;
+    }
+
+    public void setPresent(boolean present) {
+        this.present = present;
+    }
 
     public String getNimi() {
         return etunimi + " " + sukunimi;
     }
 
-    // toString-metodi (voit halutessasi jättää pois suhdekentät)
     @Override
     public String toString() {
         return "Opiskelija{" +

@@ -22,8 +22,8 @@ public class Oppitunti {
 
     @Column(name = "loppuaika")
     private LocalDateTime loppuaika;
-    @Column(name= "sijainti")
-    private String sijainti;
+
+
 
     // Getterit ja setterit
     public Long getOppitunti_id() {
@@ -58,11 +58,4 @@ public class Oppitunti {
         this.loppuaika = loppuaika;
     }
 
-    public void setSijainti(String sijainti) {
-        this.sijainti = sijainti;
-    }
-
-    public String getSijainti() {
-        return sijainti;
-    }
 }

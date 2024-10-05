@@ -22,20 +22,19 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <TableView fx:id="StudentTableView" layoutX="526.0" layoutY="179.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view">
+      <TableView fx:id="oppituntiTableView" layoutX="526.0" layoutY="179.0" prefHeight="303.0" prefWidth="459.0" styleClass="list-view">
          <columns>
-            <TableColumn fx:id="idColumn" prefWidth="60.0" text="Oppilas ID" />
-            <TableColumn fx:id="firstNameColumn" prefWidth="76.0" text="Etunimi" />
-            <TableColumn fx:id="lastNameColumn" prefWidth="91.0" text="Sukunimi" />
-            <TableColumn fx:id="attendanceColumn" prefWidth="93.0" text="Läsnäolo" />
+            <TableColumn fx:id="idColumn" prefWidth="108.0" text="Oppitunti ID" />
+            <TableColumn fx:id="pvmColumn" prefWidth="62.0" text="Pvm" />
+            <TableColumn fx:id="alkuaikaColumn" prefWidth="62.0" text="Alkuaika" />
+            <TableColumn fx:id="loppuaikaColumn" prefWidth="57.0" text="Loppuaika" />
          </columns>
       </TableView>
       <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
       <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="179.0" prefHeight="303.0" prefWidth="336.0" styleClass="table-view">
          <columns>
-            <TableColumn fx:id="courseNameColumn" prefWidth="125.0" text="Kurssi" />
-            <TableColumn fx:id="courseTeacherColumn" prefWidth="93.0" text="Opettaja ID" />
-            <TableColumn fx:id="lectureTimeColumn" prefWidth="117.0" text="Ajankohta" />
+            <TableColumn fx:id="courseNameColumn" prefWidth="225.0" text="Kurssi" />
+            <TableColumn fx:id="courseTeacherColumn" prefWidth="110.0" text="Opettaja ID" />
          </columns>
       </TableView>
       <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae oppituntia" styleClass="search-text" />
@@ -45,7 +44,7 @@
          </font>
       </Button>
       <Button fx:id="LogOutButton" contentDisplay="RIGHT" layoutX="885.0" layoutY="24.0" mnemonicParsing="false" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
-      <Button fx:id="SaveAttendanceButton" layoutX="526.0" layoutY="506.0" mnemonicParsing="false" onAction="#saveAttendance" text="Tallenna">
+      <Button fx:id="nameListButton" layoutX="526.0" layoutY="506.0" mnemonicParsing="false" onAction="#openNamelist" text="nimilista">
          <font>
             <Font size="16.0" />
          </font>

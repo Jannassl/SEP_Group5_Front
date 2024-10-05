@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.StudentListPopupController">
+    <TableView fx:id="studentTableView">
+        <columns>
+            <TableColumn fx:id="studentNameColumn" text="Student Name"/>
+        </columns>
+    </TableView>
+    <Button text="Save" onAction="#saveAttendance"/>
+</VBox>

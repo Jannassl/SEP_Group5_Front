@@ -1,14 +1,10 @@
 package service;
 
 import java.util.List;
-
 import model.Opiskelija;
-import model.Kurssi;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-
 import util.HibernateSessionFactoryManager;
 
 public class OpiskelijaService {
@@ -31,51 +27,38 @@ public class OpiskelijaService {
     }
 
     public Opiskelija createOpiskelija(Opiskelija opiskelija) {
-        Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             session.save(opiskelija);
-            transaction.commit();
+            session.getTransaction().commit();
             return opiskelija;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             throw e;
         }
     }
 
     public Opiskelija updateOpiskelija(Long id, Opiskelija opiskelija) {
-        Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             opiskelija.setOpiskelija_id(id);
             session.update(opiskelija);
-            transaction.commit();
+            session.getTransaction().commit();
             return opiskelija;
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             throw e;
         }
     }
 
     public void deleteOpiskelija(Long id) {
-        Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.beginTransaction();
+            session.beginTransaction();
             Opiskelija opiskelija = session.get(Opiskelija.class, id);
             if (opiskelija != null) {
                 session.delete(opiskelija);
             }
-            transaction.commit();
+            session.getTransaction().commit();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             throw e;
         }
     }
-
 }

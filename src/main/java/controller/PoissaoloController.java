@@ -1,6 +1,8 @@
 // PoissaoloController.java
 package controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -10,45 +12,44 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.KirjautunutKayttaja;
-import model.Kurssi;
-import model.Opettaja;
-import model.Opiskelija;
+import model.*;
 import service.KurssiService;
 import service.OpiskelijaService;
 import service.OppituntiService;
+import service.KurssiIlmoittautuminenService;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PoissaoloController {
     @FXML private TableView<Kurssi> LectureTableView;
-    @FXML private TableView<Opiskelija> StudentTableView;
+    @FXML private TableView<Oppitunti> oppituntiTableView;
     @FXML private TableColumn<Kurssi, String> courseNameColumn;
     @FXML private TableColumn<Kurssi, Long> courseTeacherColumn;
-    @FXML private TableColumn<Kurssi, String> lectureTimeColumn;
 
-    @FXML private TableColumn<Opiskelija, Long> idColumn;
-    @FXML private TableColumn<Opiskelija, String> firstNameColumn;
-    @FXML private TableColumn<Opiskelija, String> lastNameColumn;
-    @FXML private TableColumn<Opiskelija, Boolean> attendanceColumn;
+    @FXML private TableColumn<Oppitunti, Long> idColumn;
+    @FXML private TableColumn<Oppitunti, LocalDate> pvmColumn;
+    @FXML private TableColumn<Oppitunti, String> alkuaikaColumn;
+    @FXML private TableColumn<Oppitunti, String> loppuaikaColumn;
+    @FXML private TableColumn<Oppitunti, Long> kurssiID;
     @FXML private TextField LectureSearchField;
     @FXML private TextField StudentSearchField;
     @FXML private Button TakaisinButton;
-    @FXML
-    private Button SaveAttendanceButton;
+    @FXML private Button nameListButton;
+     // Add this line
 
     private KurssiService kurssiService;
     private OpiskelijaService opiskelijaService;
     private OppituntiService oppituntiService;
     private FilteredList<Kurssi> filteredLectureData;
-    private FilteredList<Opiskelija> filteredStudentData;
+    private FilteredList<Oppitunti> filteredOppituntiData;
 
-
-    public PoissaoloController (){
+    public PoissaoloController() {
         this.kurssiService = new KurssiService();
         this.oppituntiService = new OppituntiService();
         this.opiskelijaService = new OpiskelijaService();
@@ -56,11 +57,20 @@ public class PoissaoloController {
 
     @FXML
     private void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("opiskelija_id"));
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("etunimi"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("sukunimi"));
-        attendanceColumn.setCellValueFactory(new PropertyValueFactory<>("attendance"));
-        attendanceColumn.setCellFactory(CheckBoxTableCell.forTableColumn(attendanceColumn));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("oppitunti_id"));
+        alkuaikaColumn.setCellValueFactory(cellData -> {
+            LocalDateTime alkuaika = cellData.getValue().getAlkuaika();
+            return new SimpleStringProperty(alkuaika != null ? alkuaika.format(DateTimeFormatter.ofPattern("HH:mm")) : null);
+        });
+        loppuaikaColumn.setCellValueFactory(cellData -> {
+            LocalDateTime loppuaika = cellData.getValue().getLoppuaika();
+            return new SimpleStringProperty(loppuaika != null ? loppuaika.format(DateTimeFormatter.ofPattern("HH:mm")) : null);
+        });
+
+        pvmColumn.setCellValueFactory(cellData -> {
+            LocalDateTime alkuaika = cellData.getValue().getAlkuaika();
+            return new SimpleObjectProperty<>(alkuaika != null ? alkuaika.toLocalDate() : null);
+        });
 
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
         courseTeacherColumn.setCellValueFactory(new PropertyValueFactory<>("opettajaId"));
@@ -70,14 +80,26 @@ public class PoissaoloController {
 
         filteredLectureData = new FilteredList<>(LectureTableView.getItems(), p -> true);
         LectureTableView.setItems(filteredLectureData);
-        filteredStudentData = new FilteredList<>(StudentTableView.getItems(), p -> true);
-        StudentTableView.setItems(filteredStudentData);
+        filteredOppituntiData = new FilteredList<>(oppituntiTableView.getItems(), p -> true);
+        oppituntiTableView.setItems(filteredOppituntiData);
 
-        StudentSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterStudentList(newValue));
+        StudentSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterOppituntiList(newValue));
         LectureSearchField.textProperty().addListener((observable, oldValue, newValue) -> filterCourseData(newValue));
+
+        // Add listener to LectureTableView
+        LectureTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                filterLecturesByCourse(newValue);
+                nameListButton.setDisable(false); // Enable the button when a course is selected
+            } else {
+                nameListButton.setDisable(true); // Disable the button when no course is selected
+            }
+        });
+
+        nameListButton.setDisable(true); // Initially disable the button
     }
 
-        private void filterCourseData(String searchText) {
+    private void filterCourseData(String searchText) {
         filteredLectureData.setPredicate(kurssi -> {
             if (searchText == null || searchText.isEmpty()) {
                 return true;
@@ -88,9 +110,9 @@ public class PoissaoloController {
     }
 
     private void loadOpiskelijat() {
-        List<Opiskelija> opiskelijat = opiskelijaService.getAllOpiskelijat();
-        ObservableList<Opiskelija> opiskelijaObservableList = FXCollections.observableArrayList(opiskelijat);
-        StudentTableView.setItems(opiskelijaObservableList);
+        List<Oppitunti> oppitunnit = oppituntiService.getAllOppitunnit();
+        ObservableList<Oppitunti> oppituntiObservableList = FXCollections.observableArrayList(oppitunnit);
+        oppituntiTableView.setItems(oppituntiObservableList);
     }
 
     private void insertNames() {
@@ -99,6 +121,14 @@ public class PoissaoloController {
         LectureTableView.setItems(kurssiObservableList);
     }
 
+    private void filterLecturesByCourse(Kurssi selectedCourse) {
+        filteredOppituntiData.setPredicate(oppitunti -> {
+            if (selectedCourse == null) {
+                return true;
+            }
+            return oppitunti.getKurssi().getKurssi_id().equals(selectedCourse.getKurssi_id());
+        });
+    }
 
     @FXML
     void CloseProgram(ActionEvent event) {
@@ -128,15 +158,22 @@ public class PoissaoloController {
         }
     }
 
-    private void filterStudentList(String searchText) {
-        filteredStudentData.setPredicate(opiskelija -> {
+    private void filterOppituntiList(String searchText) {
+        filteredOppituntiData.setPredicate(oppitunti -> {
             if (searchText == null || searchText.isEmpty()) {
                 return true;
             }
             String lowerCaseFilter = searchText.toLowerCase();
-            if (opiskelija.getEtunimi().toLowerCase().contains(lowerCaseFilter)) {
+
+            if (String.valueOf(oppitunti.getOppitunti_id()).contains(lowerCaseFilter)) {
                 return true;
-            } else if (opiskelija.getSukunimi().toLowerCase().contains(lowerCaseFilter)) {
+            }
+
+            if (oppitunti.getAlkuaika() != null && oppitunti.getAlkuaika().toString().toLowerCase().contains(lowerCaseFilter)) {
+                return true;
+            }
+
+            if (oppitunti.getLoppuaika() != null && oppitunti.getLoppuaika().toString().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
             }
             return false;
@@ -155,8 +192,24 @@ public class PoissaoloController {
             e.printStackTrace();
         }
     }
-    @FXML
-    void saveAttendance(ActionEvent event) {
 
+    @FXML
+    void openNamelist(ActionEvent event) {
+        Kurssi selectedKurssi = LectureTableView.getSelectionModel().getSelectedItem();
+        if (selectedKurssi != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/studentListPopup.fxml"));
+                Parent root = loader.load();
+                StudentListPopupController controller = loader.getController();
+                controller.setSelectedKurssi(selectedKurssi);
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Student List");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

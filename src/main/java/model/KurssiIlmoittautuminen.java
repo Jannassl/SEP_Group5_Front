@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -24,17 +23,17 @@ public class KurssiIlmoittautuminen {
     @Column(name = "ilmoittautuminen_pvm", nullable = false)
     private Date ilmoittautuminen_pvm;
 
-    // Tyhjä konstruktori
+    // Empty constructor
     public KurssiIlmoittautuminen() {}
 
-    // Konstruktori kaikilla kentillä
+    // Constructor with all fields
     public KurssiIlmoittautuminen(Opiskelija opiskelija, Kurssi kurssi, Date ilmoittautuminen_pvm) {
         this.opiskelija = opiskelija;
         this.kurssi = kurssi;
         this.ilmoittautuminen_pvm = ilmoittautuminen_pvm;
     }
 
-    // Getterit ja setterit
+    // Getters and setters
     public Long getIlmoittautuminen_id() {
         return ilmoittautuminen_id;
     }
@@ -67,7 +66,12 @@ public class KurssiIlmoittautuminen {
         this.ilmoittautuminen_pvm = ilmoittautuminen_pvm;
     }
 
-    // toString-metodi
+    // Method to get the student's name
+    public String getOpiskelijaNimi() {
+        return opiskelija != null ? opiskelija.getNimi() : null;
+    }
+
+    // toString method
     @Override
     public String toString() {
         return "KurssiIlmoittautuminen{" +
