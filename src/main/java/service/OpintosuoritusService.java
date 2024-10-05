@@ -97,6 +97,16 @@ public class OpintosuoritusService {
         }
     }
 
+    public Opintosuoritus getOpintosuoritusByOpiskelijaAndKurssi(Opiskelija opiskelija, Kurssi kurssi) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Opintosuoritus> query = session.createQuery(
+                    "FROM Opintosuoritus o WHERE o.opiskelija = :opiskelija AND o.kurssi = :kurssi", Opintosuoritus.class);
+            query.setParameter("opiskelija", opiskelija);
+            query.setParameter("kurssi", kurssi);
+            return query.uniqueResult();
+        }
+    }
+
     public Double getAverageGradeForKurssi(Kurssi kurssi) {
         try (Session session = sessionFactory.openSession()) {
             Query<Double> query = session.createQuery(
