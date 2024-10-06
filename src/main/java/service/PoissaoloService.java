@@ -13,5 +13,14 @@ public class PoissaoloService {
         this.sessionFactory = HibernateSessionFactoryManager.getSessionFactory();
     }
 
-    // Add other methods as needed, e.g., findPoissaolo, deletePoissaolo, etc.
+    public Poissaolo createPoissaolo(Poissaolo poissaolo) {
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(poissaolo);
+            session.getTransaction().commit();
+            return poissaolo;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }

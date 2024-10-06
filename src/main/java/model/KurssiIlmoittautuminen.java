@@ -23,6 +23,9 @@ public class KurssiIlmoittautuminen {
     @Column(name = "ilmoittautuminen_pvm", nullable = false)
     private Date ilmoittautuminen_pvm;
 
+    @Transient
+    private boolean attending;
+
     // Empty constructor
     public KurssiIlmoittautuminen() {}
 
@@ -66,6 +69,14 @@ public class KurssiIlmoittautuminen {
         this.ilmoittautuminen_pvm = ilmoittautuminen_pvm;
     }
 
+    public boolean isAttending() {
+        return attending;
+    }
+
+    public void setAttending(boolean attending) {
+        this.attending = attending;
+    }
+
     // Method to get the student's name
     public String getOpiskelijaNimi() {
         return opiskelija != null ? opiskelija.getNimi() : null;
@@ -79,6 +90,7 @@ public class KurssiIlmoittautuminen {
                 ", opiskelija=" + (opiskelija != null ? opiskelija.getOpiskelija_id() : null) +
                 ", kurssi=" + (kurssi != null ? kurssi.getKurssi_id() : null) +
                 ", ilmoittautuminen_pvm=" + ilmoittautuminen_pvm +
+                ", attending=" + attending +
                 '}';
     }
 }

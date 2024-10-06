@@ -1,6 +1,7 @@
 // PoissaoloController.java
 package controller;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -32,7 +33,7 @@ public class PoissaoloController {
     @FXML private TableView<Kurssi> LectureTableView;
     @FXML private TableView<Oppitunti> oppituntiTableView;
     @FXML private TableColumn<Kurssi, String> courseNameColumn;
-    @FXML private TableColumn<Kurssi, Long> courseTeacherColumn;
+
 
     @FXML private TableColumn<Oppitunti, Long> idColumn;
     @FXML private TableColumn<Oppitunti, LocalDate> pvmColumn;
@@ -75,7 +76,7 @@ public class PoissaoloController {
         });
 
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
-        courseTeacherColumn.setCellValueFactory(new PropertyValueFactory<>("opettajaId"));
+
 
         insertNames();
         loadOpiskelijat();
@@ -92,14 +93,22 @@ public class PoissaoloController {
         LectureTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 filterLecturesByCourse(newValue);
-                nameListButton.setDisable(false); // Enable the button when a course is selected
-            } else {
-                nameListButton.setDisable(true); // Disable the button when no course is selected
             }
         });
+
         oppituntiTableView.setRowFactory(tv -> new CustomTableRow());
 
-        nameListButton.setDisable(true); // Initially disable the button
+        // Bind the disable property of the nameListButton
+        nameListButton.disableProperty().bind(
+                oppituntiTableView.getSelectionModel().selectedItemProperty().isNull()
+        );
+
+        // Bind the opacity property of the nameListButton
+        nameListButton.opacityProperty().bind(
+                Bindings.when(oppituntiTableView.getSelectionModel().selectedItemProperty().isNull())
+                        .then(0.5)
+                        .otherwise(1.0)
+        );
     }
 
     private void filterCourseData(String searchText) {
@@ -200,12 +209,13 @@ public class PoissaoloController {
     @FXML
     void openNamelist(ActionEvent event) {
         Kurssi selectedKurssi = LectureTableView.getSelectionModel().getSelectedItem();
-        if (selectedKurssi != null) {
+        Oppitunti selectedOppitunti = oppituntiTableView.getSelectionModel().getSelectedItem(); // Get the selected Oppitunti
+        if (selectedKurssi != null && selectedOppitunti != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/studentListPopup.fxml"));
                 Parent root = loader.load();
                 StudentListPopupController controller = loader.getController();
-                controller.setSelectedKurssi(selectedKurssi);
+                controller.setSelectedKurssiAndOppitunti(selectedKurssi, selectedOppitunti); // Pass both Kurssi and Oppitunti
 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));

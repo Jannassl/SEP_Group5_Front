@@ -34,7 +34,7 @@
       <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="179.0" prefHeight="303.0" prefWidth="336.0" styleClass="table-view">
          <columns>
             <TableColumn fx:id="courseNameColumn" prefWidth="225.0" text="Kurssi" />
-            <TableColumn fx:id="courseTeacherColumn" prefWidth="110.0" text="Opettaja ID" />
+
          </columns>
       </TableView>
       <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae oppituntia" styleClass="search-text" />

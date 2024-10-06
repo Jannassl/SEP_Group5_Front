@@ -6,8 +6,9 @@
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.StudentListPopupController">
     <TableView fx:id="studentTableView">
         <columns>
-            <TableColumn fx:id="studentNameColumn" text="Student Name"/>
+            <TableColumn fx:id="studentNameColumn" text="Student Name" />
+            <TableColumn fx:id="attendanceColumn" text="Attendance" />
         </columns>
     </TableView>
-    <Button text="Save" onAction="#saveAttendance"/>
+    <Button fx:id="saveAttendanceButton" text="Tallenna" onAction="#saveAttendance" />
 </VBox>
