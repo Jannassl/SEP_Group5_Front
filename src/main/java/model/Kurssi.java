@@ -1,7 +1,9 @@
+// src/main/java/model/Kurssi.java
 package model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "kurssi")
@@ -29,6 +31,9 @@ public class Kurssi {
     @JoinColumn(name = "opettaja_id", nullable = false)
     private Opettaja opettaja;
 
+    @OneToMany(mappedBy = "kurssi", fetch = FetchType.EAGER) // Fetch eagerly
+    private List<Oppitunti> oppitunnit;
+
     // Constructors
     public Kurssi() {}
 
@@ -41,9 +46,6 @@ public class Kurssi {
     }
 
     // Getters and Setters
-    public Long getOpettajaId() {
-        return opettaja != null ? opettaja.getOpettaja_id() : null;
-    }
     public Long getKurssi_id() {
         return kurssi_id;
     }
@@ -92,8 +94,22 @@ public class Kurssi {
         this.opettaja = opettaja;
     }
 
+    public List<Oppitunti> getOppitunnit() {
+        return oppitunnit;
+    }
 
-    // toString-metodi
+    public void setOppitunnit(List<Oppitunti> oppitunnit) {
+        this.oppitunnit = oppitunnit;
+    }
+
+    public Oppitunti getOppitunti() {
+        if (oppitunnit != null && !oppitunnit.isEmpty()) {
+            return oppitunnit.get(0); // Assuming you want the first Oppitunti
+        }
+        return null;
+    }
+
+    // toString method
     @Override
     public String toString() {
         return "Kurssi{" +
