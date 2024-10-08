@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import model.Kurssi;
+import model.Opiskelija;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -91,6 +92,15 @@ public class KurssiService {
             Query<Kurssi> query = session.createQuery(
                     "FROM Kurssi k WHERE k.opettaja.opettaja_id = :opettajaId", Kurssi.class);
             query.setParameter("opettajaId", opettajaId);
+            return query.list();
+        }
+    }
+
+    public List<Kurssi> getKurssitByOpiskelija(Opiskelija opiskelija) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Kurssi> query = session.createQuery(
+                    "SELECT DISTINCT ki.kurssi FROM KurssiIlmoittautuminen ki WHERE ki.opiskelija = :opiskelija", Kurssi.class);
+            query.setParameter("opiskelija", opiskelija);
             return query.list();
         }
     }

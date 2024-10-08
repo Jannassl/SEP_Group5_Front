@@ -15,12 +15,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.KirjautunutKayttaja;
 import model.Opiskelija;
+import model.Kurssi;
+import model.Opintosuoritus;
 import service.OpiskelijaService;
+import service.KurssiService;
+import service.OpintosuoritusService;
+import view.OpiskelijaKurssiItem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentInfoController {
+    @FXML
+    private Button naytaKurssitButton;
+    @FXML
+    private ListView<OpiskelijaKurssiItem> opiskelijanKurssitList;
     @FXML
     private Label nimiLabel;
     @FXML
@@ -29,7 +39,6 @@ public class StudentInfoController {
     private Label puhelinnumeroLabel;
     @FXML
     private Label huoltajaLabel;
-
     @FXML
     private Button LogOutButton;
     @FXML
@@ -38,7 +47,6 @@ public class StudentInfoController {
     private Button ProfiiliButton;
     @FXML
     private Button TakaisinButton;
-
     @FXML
     private TableView<Opiskelija> StudentTableView;
     @FXML
@@ -47,15 +55,19 @@ public class StudentInfoController {
     private TableColumn<Opiskelija, String> firstNameColumn;
     @FXML
     private TableColumn<Opiskelija, String> lastNameColumn;
-
-    private OpiskelijaService opiskelijaService;
     @FXML
     private TextField SearchTextField;
 
+    private OpiskelijaService opiskelijaService;
+    private KurssiService kurssiService;
+    private OpintosuoritusService opintosuoritusService;
     private FilteredList<Opiskelija> filteredData;
+    private boolean isShowingCourses = false;
 
     public StudentInfoController() {
         this.opiskelijaService = new OpiskelijaService();
+        this.kurssiService = new KurssiService();
+        this.opintosuoritusService = new OpintosuoritusService();
     }
 
     @FXML
@@ -138,15 +150,55 @@ public class StudentInfoController {
 
     private void showStudentDetails(Opiskelija opiskelija) {
         if (opiskelija != null) {
-            nimiLabel.setText("Nimi: "+ opiskelija.getEtunimi() + " " + opiskelija.getSukunimi());
-            sahkopostiLabel.setText("Sähköposti: "+opiskelija.getSahkoposti());
-            puhelinnumeroLabel.setText("Puhelinnumero: "+ opiskelija.getPuhelinnumero());
-            //huoltajaLabel.setText(opiskelija.getHuoltaja());
+            nimiLabel.setText("Nimi: " + opiskelija.getEtunimi() + " " + opiskelija.getSukunimi());
+            sahkopostiLabel.setText("Sähköposti: " + opiskelija.getSahkoposti());
+            puhelinnumeroLabel.setText("Puhelinnumero: " + opiskelija.getPuhelinnumero());
+            if (opiskelija.getHuoltaja() != null) {
+                huoltajaLabel.setText("Huoltaja: " + opiskelija.getHuoltaja().getEtunimi() + " " + opiskelija.getHuoltaja().getSukunimi());
+            } else {
+                huoltajaLabel.setText("Huoltaja: Ei määritetty");
+            }
         } else {
             nimiLabel.setText("");
             sahkopostiLabel.setText("");
             puhelinnumeroLabel.setText("");
             huoltajaLabel.setText("");
         }
+    }
+
+    @FXML
+    public void showCourses(ActionEvent actionEvent) {
+        Opiskelija selectedOpiskelija = StudentTableView.getSelectionModel().getSelectedItem();
+        if (selectedOpiskelija == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ei valittua opiskelijaa");
+            alert.setHeaderText(null);
+            alert.setContentText("Valitse ensin opiskelija listasta.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!isShowingCourses) {
+            // Show courses
+            List<Kurssi> opiskelijanKurssit = kurssiService.getKurssitByOpiskelija(selectedOpiskelija);
+            List<OpiskelijaKurssiItem> kurssiItems = new ArrayList<>();
+
+            for (Kurssi kurssi : opiskelijanKurssit) {
+                Opintosuoritus opintosuoritus = opintosuoritusService.getOpintosuoritusByOpiskelijaAndKurssi(selectedOpiskelija, kurssi);
+                kurssiItems.add(new OpiskelijaKurssiItem(kurssi, opintosuoritus, opintosuoritusService, selectedOpiskelija));
+            }
+
+            opiskelijanKurssitList.setItems(FXCollections.observableArrayList(kurssiItems));
+            StudentTableView.setVisible(false);
+            opiskelijanKurssitList.setVisible(true);
+            naytaKurssitButton.setText("Takaisin");
+        } else {
+            // Show student list
+            StudentTableView.setVisible(true);
+            opiskelijanKurssitList.setVisible(false);
+            naytaKurssitButton.setText("Näytä oppilaan kurssit");
+        }
+
+        isShowingCourses = !isShowingCourses;
     }
 }
