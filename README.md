@@ -3,7 +3,7 @@
 ## Projektin kuvaus:
 
 Tämä projekti on Java-pohjainen sovellus, joka käyttää JavaFX:ää käyttöliittymän toteuttamiseen. Projektia hallinnoidaan Mavenin avulla, joka hoitaa riippuvuuksien hallinnan ja rakentamisprosessit. Sovelluksessa on useita käyttöliittymäkomponentteja, jotka on tyylitelty CSS:llä
-ja se on rakennettu Model-View-Controller (MVC) -arkkitehtuurin mukaisesti. Ohjelmamme tarkoitus on luoda keskitetty järjestelmä oppilaitoksille, missä käyttäjät voivat tehdä oleelliset hallinnolliset tehtävät. Ohjelman ideana on parantaa oppilaitoksen tehokkuutta ja käyttäjien tyytyväisyyttä.
+ja sen rakentamisessa on käytetty apuna Model-View-Controller (MVC) -arkkitehtuuria. Ohjelmamme tarkoitus on luoda keskitetty järjestelmä oppilaitoksille, missä käyttäjät voivat tehdä oleelliset hallinnolliset tehtävät. Ohjelman ideana on parantaa oppilaitoksen tehokkuutta ja käyttäjien tyytyväisyyttä.
 Tämä ohjelma on erityisesti kehitetty koulun opettajille, jotta he voivat tehokkaasti ylläpitää ja hallinnoida opiskelijoihinsa liittyviä tietoja. Alusta on käytettävissä yksinomaan opettajille, joilla on käyttäjätili, varmistaen, että vain valtuutettu henkilöstö voi käyttää sitä. Käyttäjätilien hallinnasta vastaavat koulun ylläpitäjät, jotka valvovat järjestelmän käyttöoikeuksia ja turvallisuutta.
 
 ## Ajatus on, että vain koulun ylläpitäjät voivat luoda uusia käyttäjätilejä ja hallinnoida niitä.
