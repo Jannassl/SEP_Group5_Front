@@ -10,10 +10,11 @@ Tämä ohjelma on erityisesti kehitetty koulun opettajille, jotta he voivat teho
 
 ## Työkalut ja teknologiat
 
-- **Java**: Sovelluksen logiikan ensisijainen ohjelmointikieli..
-- **JavaFX**: Käytetään käyttöliittymän rakentamiseen.
-- **Maven**: Rakennusautomaatiotyökalu, jota käytetään projektin riippuvuuksien ja rakennusprosessien hallintaan.
-- **JUnit 5**: Käytetään yksikkötestien kirjoittamiseen ja suorittamiseen.
+- **Java**
+- **JavaFX**
+- **Maven**
+- **JUnit 5**
+- **MySQL** 
 
 ## Projektin rakenne
 
