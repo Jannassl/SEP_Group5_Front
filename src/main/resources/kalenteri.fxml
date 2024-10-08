@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KalenteriController" stylesheets="@TapahtumatStyles.css">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" stylesheets="@TapahtumatStyles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KalenteriController">
     <children>
-        <VBox spacing="10" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10;">
-                <Button fx:id="TakaisinButton" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Button>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kalenteri" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-                    <font>
-                        <Font size="27.0" />
-                    </font>
-                </Text>
-                <Button fx:id="ProfiiliButton" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0" styleClass="profiili-button" text="Profiili">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Button>
-                <Button fx:id="LogOutButton" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0"  styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
-            </HBox>
+        <Text layoutX="450.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kalenteri" textAlignment="CENTER" textOrigin="CENTER">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Text>
+        <Line endX="913.0" layoutX="105.0" layoutY="73.0" startX="-105.0" stroke="gray" strokeWidth="2.0" />
+        <Button fx:id="ProfiiliButton" layoutX="680.0" layoutY="14.0" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="LogOutButton" layoutX="905.0" layoutY="14.0" onAction="#CloseProgram" prefHeight="25.0" prefWidth="120.0" styleClass="logout-button" text="Kirjaudu ulos" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0" />
+        <Button fx:id="TakaisinButton" layoutX="20.0" layoutY="14.0" onAction="#navigateBackwards" prefHeight="25.0" prefWidth="90.0" styleClass="back-button" text="Takaisin" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="14.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <VBox spacing="10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
 
-            <Line endX="1000.0" startX="0.0" />
-
-            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10;">
-                <Button fx:id="PreviousWeekButton" onAction="#showPreviousWeek" prefHeight="25.0" prefWidth="150.0" text="Edellinen viikko" styleClass="Week-Button">
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20;">
+                <Button fx:id="PreviousWeekButton" onAction="#showPreviousWeek" prefHeight="25.0" prefWidth="150.0" styleClass="Week-Button" text="Edellinen viikko">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="CurrentWeekButton" onAction="#showCurrentWeek" prefHeight="25.0" prefWidth="150.0" text="Tämä viikko" styleClass="Today-Button">
+                <Button fx:id="CurrentWeekButton" onAction="#showCurrentWeek" prefHeight="25.0" prefWidth="150.0" styleClass="Today-Button" text="Tämä viikko">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="NextWeekButton" onAction="#showNextWeek" prefHeight="25.0" prefWidth="150.0" text="Seuraava viikko" styleClass="Week-Button">
+                <Button fx:id="NextWeekButton" onAction="#showNextWeek" prefHeight="25.0" prefWidth="150.0" styleClass="Week-Button" text="Seuraava viikko">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="NewEvent" onAction="#newEvent" prefHeight="25.0" prefWidth="200.0" text="Lisää oppitunti" styleClass="All-Button">
+                <Button fx:id="NewEvent" onAction="#newEvent" prefHeight="25.0" prefWidth="200.0" styleClass="All-Button" text="Lisää oppitunti">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
             </HBox>
-
-            <ListView fx:id="dayListView" VBox.vgrow="ALWAYS" orientation="HORIZONTAL" styleClass="Lista-ikkuna" prefHeight="400.0" minHeight="400.0" maxHeight="400.0"/>
+            <ListView fx:id="dayListView" maxHeight="400.0" minHeight="400.0" orientation="HORIZONTAL" prefHeight="400.0" styleClass="Lista-ikkuna" VBox.vgrow="ALWAYS" />
         </VBox>
     </children>
 </AnchorPane>

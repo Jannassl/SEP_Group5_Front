@@ -30,14 +30,14 @@
             <TableColumn fx:id="loppuaikaColumn" prefWidth="57.0" text="Loppuaika" />
          </columns>
       </TableView>
-      <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppilaan nimi" styleClass="search-text" />
+      <TextField fx:id="StudentSearchField" layoutX="526.0" layoutY="119.0" prefHeight="22.0" prefWidth="200.0" promptText="Syötä oppitunti" styleClass="search-text" />
       <TableView fx:id="LectureTableView" layoutX="20.0" layoutY="179.0" prefHeight="303.0" prefWidth="336.0" styleClass="table-view">
          <columns>
             <TableColumn fx:id="courseNameColumn" prefWidth="225.0" text="Kurssi" />
 
          </columns>
       </TableView>
-      <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae oppituntia" styleClass="search-text" />
+      <TextField fx:id="LectureSearchField" layoutX="20.0" layoutY="115.0" prefHeight="22.0" prefWidth="200.0" promptText="Hae kurssia" styleClass="search-text" />
       <Button fx:id="ProfiiliButton" contentDisplay="RIGHT" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" onAction="#openProfiiliPage" prefHeight="25.0" prefWidth="90.0" styleClass="profiili-button" text="Profiili" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="14.0" />
