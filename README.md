@@ -55,4 +55,6 @@ Suorita ohjelma ajamalla Main.java
 ## [Käyttötapauskaavio](https://github.com/Jannassl/SEP_Group5_Front/blob/diagrams/Diagrams/OTPcd.png)
 
 ## [Aktiviteettikaavio](https://github.com/Jannassl/SEP_Group5_Front/blob/diagrams/Diagrams/aktiviteettikaavio.png)
+
+**Trello**(https://trello.com/w/usertyotila06360736)
  
