@@ -52,3 +52,6 @@ Suorita ohjelma ajamalla Main.java
 ## [ER-kaavio](https://github.com/Jannassl/SEP_Group5_Front/blob/diagrams/Diagrams/OTPer.png)
 
 ## [Käyttötapauskaavio](https://github.com/Jannassl/SEP_Group5_Front/blob/diagrams/Diagrams/OTPcd.png)
+
+## [Aktiviteettikaavio](https://github.com/Jannassl/SEP_Group5_Front/blob/diagrams/Diagrams/aktiviteettikaavio.png)
+ 
