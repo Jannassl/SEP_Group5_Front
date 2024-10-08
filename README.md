@@ -38,7 +38,7 @@ Tämä ohjelma on erityisesti kehitetty koulun opettajille, jotta he voivat teho
 - Java Development Kit (JDK) 11 tai uudempi
 - Maven 3.6.0 tai uudempi
 - IntelliJ IDEA tai jokin muu Java-IDE
-
+- Metropolia-VPN päällä
 ### Askeleet projektin suorittamiseksi
 
 1. **Kloonaa repositorio**:
